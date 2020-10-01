@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/ayaankhan98/bigINT/branch/main/graph/badge.svg)](https://codecov.io/gh/ayaankhan98/bigINT)
 # bigINT
 Big Integer(Library) Support for C++
 
