@@ -1,5 +1,5 @@
-#ifndef BIG_INT
-#define BIG_INT
+#ifndef BIG_INT_HPP
+#define BIG_INT_HPP
 
 #include <iostream>
 #include <string>
