@@ -31,6 +31,11 @@
 #include "../bigint.hpp"
 
 namespace libbig {
-
+    std::ostream& operator << (std::ostream& out, largeInt& z) {
+        if (!z.sign) {
+            std::cout << '-';
+        }
+        std::cout << z.number;
+        return out;
+    }
 } // namespace libbig
-
