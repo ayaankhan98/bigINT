@@ -109,7 +109,7 @@ namespace libbig {
       void operator = (int64_t);
       void operator = (long long);
 
-      bool operator == (largeInt);
+      bool operator == (const largeInt&);
       bool operator == (int);
       bool operator == (int64_t);
       bool operator == (long long);
