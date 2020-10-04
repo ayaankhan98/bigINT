@@ -5,8 +5,7 @@
  * accompanying documentation covered by this license 
  * (the "Software") to use, reproduce, display, distribute, 
  * execute, and transmit the Software, and to prepare derivative 
- * works of the Software, and to permit third-parties to whom the 
- * Software is furnished to do so, all subject to the following:
+ * works of the Software, and to permit third-parties to whom the
  * 
  * The copyright notices in the Software and this entire statement, 
  * including the above license grant, this restriction and the following 
