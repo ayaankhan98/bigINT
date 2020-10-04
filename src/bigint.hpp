@@ -38,17 +38,12 @@ namespace libbig {
       std::string number;
 
     public:
-      largeInt() {
-      }
+      largeInt();
 
-      largeInt(int) {
-      }
-      largeInt(int64_t) {
-      }
-      largeInt(long long) {
-      }
-      largeInt(std::string) {
-      }
+      largeInt(int);
+      largeInt(int64_t);
+      largeInt(long long);
+      largeInt(std::string);
 
       largeInt operator + (largeInt);
       largeInt operator + (int);
