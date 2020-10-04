@@ -7,7 +7,7 @@ int main() {
   freopen("input.txt", "r", stdin);
 
   libbig::largeInt num, temp;
-  num = "10000000000000000000000000";
+  num = std::string("10000000000000000000000000");
   int b, c;
   long long d;
   
