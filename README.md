@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/ayaankhan98/bigINT/branch/main/graph/badge.svg)](https://codecov.io/gh/ayaankhan98/bigINT)
+[![codecov]➡(https://codecov.io/gh/ayaankhan98/bigINT/branch/main/graph/badge.svg)](https://codecov.io/gh/ayaankhan98/bigINT)
 # bigINT
 Big Integer(Library) Support for C++
 
@@ -42,3 +42,64 @@ We aim to build a library for C++ 17 or above for big integer support
 - CMake 3.16.8 or above
 - GCC 9
 - C++ 17
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+	char ch;
+	const char *fileName="test.txt";
+	
+	//declare object
+	ifstream file;
+	
+	//open file
+	file.open(fileName,ios::in);
+	if(!file)
+	{
+		cout<<"Error in opening file!!!"<<endl;
+		return -1; //return from main
+	}
+	
+	//read and print file content
+	while (!file.eof()) 
+	{
+		file >> noskipws >> ch;	//reading from file
+		cout << ch;	//printing
+	}
+	//close the file
+	file.close();
+	
+	return 0;
+ #include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+	char ch;
+	const char *fileName="test.txt";
+	
+	//declare object
+	ifstream file;
+	
+	//open file
+	file.open(fileName,ios::in);
+	if(!file)
+	{
+		cout<<"Error in opening file!!!"<<endl;
+		return -1; //return from main
+	}
+	
+	//read and print file content
+	while (!file.eof()) 
+	{
+		file >> noskipws >> ch;	//reading from file
+		cout << ch;	//printing
+	}
+	//close the file
+	file.close();
+	
+	return 0;
+} 
