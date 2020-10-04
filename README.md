@@ -42,3 +42,20 @@ We aim to build a library for C++ 17 or above for big integer support
 - CMake 3.16.8 or above
 - GCC 9
 - C++ 17
+
+
+### Chidu2000 , date-04-10-2020
+Hey, I would like to add some points here.
+BigInteger is a very robust library which could be used in c++.
+Some functions like max(a,b),pow(),min(),avg(), are used to get complex calculations done easily.
+
+suggestion on converting into big integer is to use , biginteger.valueOf(int) instead of integer.
+We just need to download the zip file and,
+need to extract the same in specified gcc ,or ,
+it could also be done using command prompt
+
+Advantages in the long run:-
+Much reduction in space allocation to complex calculations, thereby reducing space comlexity
+Time to execute programs will be reduced ,i.e time complexity would not be exponential
+Easy modifications of code will be encouraged
+Easy implementation,support for any range of data , reduced errors ,easy understandibility for programmers.
