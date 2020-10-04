@@ -33,9 +33,9 @@
 namespace libbig {
     std::ostream& operator << (std::ostream& out, largeInt& z) {
         if (!z.sign) {
-            std::cout << '-';
+            out << '-';
         }
-        std::cout << z.number;
+        out << z.number;
         return out;
     }
 } // namespace libbig

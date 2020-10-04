@@ -43,16 +43,6 @@ namespace libbig {
 		this->number = std::to_string(nValue);
 	}
 
-	largeInt::largeInt(int64_t nValue) {
-		if (nValue < 0) {
-			this->sign = 0;
-			nValue *= -1;
-		} else {
-			this->sign = 1;
-		}
-		this->number = std::to_string(nValue);
-	}
-
 	largeInt::largeInt(long long nValue) {
 		if (nValue < 0) {
 			this->sign = 0;
