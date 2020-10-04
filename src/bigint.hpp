@@ -135,7 +135,7 @@ namespace libbig
     bool operator>=(long long);
 
     friend std::istream &operator>>(std::istream &, largeInt &);
-    friend std::ostream &operator<<(std::ostream &, largeInt &);
+    friend std::ostream &operator<<(std::ostream &, const largeInt &);
   };
 } // namespace libbig
 
