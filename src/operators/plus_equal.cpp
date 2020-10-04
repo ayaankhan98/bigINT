@@ -31,6 +31,68 @@
 #include "../bigint.hpp"
 
 namespace libbig {
+  largeInt &operator += (largeInt a) {
+        largeInt res;
+        string s1 = this.number;
+        string s2 = a.number;
+        res = addLargeInt(s1, s2);
+        return res;
+    }
+    largeInt &operator += (int a) {
+        largeInt res;
+        string s1 = this.number;
+        string s2 = std::to_string(a);
+        res = addLargeInt(s1, s2);
+        return res;
+    }
+    largeInt &operator += (int64_t a) {
+        largeInt res;
+        string s1 = this.number;
+        string s2 = std::to_string(a);
+        res = addLargeInt(s1, s2);
+        return res;
+    }
+    largeInt &operator += (long long a) {
+        largeInt res;
+        string s1 = this.number;
+        string s2 = std::to_string(a);
+        res = addLargeInt(s1, s2);
+        return res;
+    }
 
+    largeInt addLargeInt(string s1, string s2) {
+        largeInt temp;
+        string tempS = "";
+        if (s1.length > s2.length) {
+            tempS = s1;
+            s1 = s2;
+            s2 = tempS;
+        }
+        reverse(s1.begin(), s1.end());
+        reverse(s2.begin(), s2.end());
+
+        int carry = 0;
+
+        for (int i=0; i<s1.length(); i++) {
+            int sum = ((s1[i] - '0') + (s2[i] - '0') + carry);
+            temp.number.push_back(sum%10 + '0');
+
+            carry = sum / 10;
+        }
+
+        for (int i=n1; i<n2; i++) {
+            int sum = ((str2[i] - '0') + carry);
+            str.push_back(sum % 10 + '0');
+            carry = sum / 10;
+        }
+
+        if (carry) {
+            str.push_back(carry + '0');
+        }
+
+        reverse(temp.number.begin(), temp.number.end());
+
+        return temp;
+    }
 } // namespace libbig
 
