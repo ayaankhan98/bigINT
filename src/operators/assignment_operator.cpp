@@ -30,7 +30,29 @@
 
 #include "../bigint.hpp"
 
-namespace libbig {
+namespace libbig
+{
+  void largeInt::operator=(largeInt x)
+  {
+    sign = x.sign;
+    number = x.number;
+  }
 
+  void largeInt::operator=(int x)
+  {
+    sign = x >= 0;
+    number = std::to_string(std::abs(x));
+  }
+
+  void largeInt::operator=(int64_t x)
+  {
+    sign = x >= 0;
+    number = std::to_string(std::abs(x));
+  }
+
+  void largeInt::operator=(long long x)
+  {
+    sign = x >= 0;
+    number = std::to_string(std::abs(x));
+  }
 } // namespace libbig
-
