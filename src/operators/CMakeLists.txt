@@ -15,4 +15,3 @@
 #     # endif()
 #     install(TARGETS ${testname} DESTINATION "bin/operators")
 
-# endforeach( testsourcefile ${APP_SOURCES} )
