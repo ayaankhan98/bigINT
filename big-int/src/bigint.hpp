@@ -100,10 +100,10 @@ class largeInt
 
     //   POSTFIX OPERATORS
 
-    largeInt& operator=(const largeInt &);
-    largeInt& operator=(int);
-    largeInt& operator=(int64_t);
-    largeInt& operator=(long long);
+    largeInt &operator=(const largeInt &);
+    largeInt &operator=(int);
+    largeInt &operator=(int64_t);
+    largeInt &operator=(long long);
 
     bool operator==(const largeInt &);
     bool operator==(int);
