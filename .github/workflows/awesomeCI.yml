@@ -1,30 +1,42 @@
-name: Awesome CI workflow
+name: Awesome CI Workflow
 
-on:
-  pull_request:
-  push:
-    branches: 
-      - master
-
-env:
-  BUILD_TYPE: Release
+on: [push, pull_request]
 
 jobs:
-  build:
+  MainSequence:
+    name: Code Formatter
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v2
+      - name: requirements
+        run: | 
+          sudo apt -qq -y update
+          sudo apt -qq install clang-tidy-10 clang-format-10
+                    
+  build:
+    runs-on: ${{ matrix.os }}
+    needs: [MainSequence]
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
     - uses: actions/checkout@v2
+
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
-    - name: Configure CMake
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
     - name: Build
-      working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --config $BUILD_TYPE
-    - name: Test
       working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE && make
+
+    - name: Testing Operators
+      working-directory: ${{runner.workspace}}/build/tests/operators
       shell: bash
-      run: ctest -C $BUILD_TYPE
+      run: ctest
+
+    - name: Testing Operations
+      working-directory: ${{runner.workspace}}/build/tests/operations
+      shell: bash
+      run: ctest
