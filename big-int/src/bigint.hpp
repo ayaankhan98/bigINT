@@ -33,8 +33,8 @@
 
 namespace libbig
 {
-  constexpr bool POSITIVE = true;
-  constexpr bool NEGATIVE = false;
+constexpr bool POSITIVE = true;
+constexpr bool NEGATIVE = false;
 class largeInt
 {
   private:
