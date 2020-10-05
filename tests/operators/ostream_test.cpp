@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "../../big-int/src/bigint.hpp"
+#include <bigint.hpp>
 
 int main()
 {
