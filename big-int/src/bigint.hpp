@@ -125,7 +125,7 @@ class largeInt
     bool operator!=(int);
     bool operator!=(int64_t);
 
-    bool operator<(const largeInt& z);
+    bool operator<(const largeInt&);
     bool operator<(int);
     bool operator<(int64_t);
     bool operator<(long long);
