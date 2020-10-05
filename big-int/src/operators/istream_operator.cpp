@@ -30,19 +30,23 @@
 
 #include "../bigint.hpp"
 
-namespace libbig {
-  std::istream& operator >> (std::istream& inp, largeInt& z) {
+namespace libbig
+{
+std::istream &operator>>(std::istream &inp, largeInt &z)
+{
     inp >> z.number;
-    if (z.number[0] == '-') {
-      z.sign = NEGATIVE;
-      std::string temporary = std::string(z.number.begin() + 1, z.number.end());
-      z.number.clear();
-      z.number = std::string(temporary.begin(), temporary.end());
-      temporary.clear();
+    if (z.number[0] == '-')
+    {
+        z.sign = NEGATIVE;
+        std::string temporary = std::string(z.number.begin() + 1, z.number.end());
+        z.number.clear();
+        z.number = std::string(temporary.begin(), temporary.end());
+        temporary.clear();
     }
-    else {
-      z.sign = POSITIVE;
+    else
+    {
+        z.sign = POSITIVE;
     }
     return inp;
-  }
+}
 } // namespace libbig

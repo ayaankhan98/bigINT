@@ -30,19 +30,25 @@
 
 #include "../bigint.hpp"
 
-namespace libbig {
-  bool largeInt:: operator == (const largeInt& z) {
-    if(this->sign != z.sign) {
-      return false;
-    }
-    if (this->number.length() != z.number.length()) {
-      return false;
-    }
-    for(int i = 0; i < this->number.length(); i++) {
-      if (this->number[i] != z.number[i]) {
+namespace libbig
+{
+bool largeInt::operator==(const largeInt &z)
+{
+    if (this->sign != z.sign)
+    {
         return false;
-      }
+    }
+    if (this->number.length() != z.number.length())
+    {
+        return false;
+    }
+    for (int i = 0; i < this->number.length(); i++)
+    {
+        if (this->number[i] != z.number[i])
+        {
+            return false;
+        }
     }
     return true;
-  }
+}
 } // namespace libbig
