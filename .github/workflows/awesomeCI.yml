@@ -13,6 +13,43 @@ jobs:
         run: | 
           sudo apt -qq -y update
           sudo apt -qq install clang-tidy-10 clang-format-10
+          
+      - name: Setup Git Specs
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          
+      - name: Filename Formatter
+        run: |
+          IFS=$'\n'
+          for fname in `find . -type f -name '*.cpp' -o -name '*.cc' -o -name '*.h'`
+          do 
+            echo "${fname}"
+            new_fname=`echo ${fname} | tr ' ' '_'`
+            echo "      ${new_fname}"
+            new_fname=`echo ${new_fname} | tr 'A-Z' 'a-z'`
+            echo "      ${new_fname}"
+            new_fname=`echo ${new_fname} | tr '-' '_'`
+            echo "      ${new_fname}"
+            new_fname=${new_fname/.cc/.cpp}
+            echo "      ${new_fname}"
+            if [ ${fname} != ${new_fname} ]
+            then
+              echo "      ${fname} --> ${new_fname}"
+              git "mv" "${fname}" ${new_fname}
+            fi
+          done
+          git commit -am "formatting filenames ${GITHUB_SHA::8}" ||  true
+      
+      - name: Get file changes
+        run: |
+          git remote -v
+          git branch
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git diff --diff-filter=dr --name-only origin/master > git_diff.txt
+          echo "Files changed-- `cat git_diff.txt`"
+        
       - name: Configure for static lint checks
         # compiling first gives clang-tidy access to all the header files and settings used to compile the programs. 
         # This will check for macros, if any, on linux and not for Windows. But the use of portability checks should 
