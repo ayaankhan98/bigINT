@@ -31,31 +31,18 @@
 #include <iostream>
 #include <string>
 
-namespace libbig
-{
-class largeInt
-{
+namespace libbig {
+class largeInt {
   private:
     bool sign;
     std::string number;
 
   public:
-    largeInt()
-    {
-    }
-
-    largeInt(int)
-    {
-    }
-    largeInt(int64_t)
-    {
-    }
-    largeInt(long long)
-    {
-    }
-    largeInt(std::string)
-    {
-    }
+    largeInt();
+    largeInt(int);
+    largeInt(int64_t);
+    largeInt(long long);
+    largeInt(std::string);
 
     largeInt operator+(largeInt);
     largeInt operator+(int);
@@ -111,7 +98,7 @@ class largeInt
 
     //   POSTFIX OPERATORS
 
-    void operator=(largeInt);
+    void operator=(const largeInt &);
     void operator=(int);
     void operator=(int64_t);
     void operator=(long long);
@@ -146,7 +133,7 @@ class largeInt
     bool operator>=(long long);
 
     friend std::istream &operator>>(std::istream &, largeInt &);
-    friend std::ostream &operator<<(std::ostream &, largeInt &);
+    friend std::ostream &operator<<(std::ostream &, const largeInt &);
 };
 } // namespace libbig
 
