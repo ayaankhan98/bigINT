@@ -1,13 +1,11 @@
-
-#include <istream>
-#include <ostream>
-
+#include <stdio.h>
+#include <bits/stdc++.h>
+#include<vector>
+using namespace std;
 #include "../bigint.hpp"
 
 
-namespace libbig {
-
-    int multiply(int x, int res[], int res_size) {
+int multiply(int x, int res[], int res_size) {
         int carry = 0;
     
         for (int i = 0; i < res_size; i++) {
@@ -24,11 +22,12 @@ namespace libbig {
         return res_size;
     }
     
-    largeInt* pow(int a, int b) 
+    
+largeInt* pow(int a, int b) 
     {
         if(b == 0 ){ 
-            largeInt * tempo=new largeInt("1");
-            return tempo;
+            cout<< "1";
+            return NULL;
         }
     
     
@@ -67,10 +66,23 @@ namespace libbig {
             str='-'+str;
         }
         
-        cout<<str;
-
+        
         largeInt * tempo=new largeInt(str);
         return tempo;
 
 }
+
+
+
+
+int main(){
+
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+
+
+    largeInt *obj=pow(3,21);
+    //3 to the power 21 is stored in object whose reference is obj pointer
 }
