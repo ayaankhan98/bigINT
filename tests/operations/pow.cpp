@@ -77,10 +77,10 @@ largeInt* pow(int a, int b)
 
 int main(){
 
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt","r",stdin);
+    // freopen("output.txt","w",stdout);
+    // #endif
 
 
     largeInt *obj=pow(3,21);
