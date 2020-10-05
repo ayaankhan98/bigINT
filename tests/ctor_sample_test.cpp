@@ -30,20 +30,20 @@
 
 int main()
 {
-	// tests default ctor
-	libbig::largeInt a;
-	assert(a == 0);
+    // tests default ctor
+    libbig::largeInt a;
+    assert(a == 0);
 
-	//tests std::string ctor
-	libbig::largeInt b("42");
-	assert(b == 42);
+    // tests std::string ctor
+    libbig::largeInt b("42");
+    assert(b == 42);
 
-	libbig::largeInt c("3333333333333333333");
-	assert(c == (long long)3333333333333333333);
+    libbig::largeInt c("3333333333333333333");
+    assert(c == (long long)3333333333333333333);
 
-	// tests int and long long ctors
-	libbig::largeInt d(999999);
-	assert(d == libbig::largeInt(999999));
+    // tests int and long long ctors
+    libbig::largeInt d(999999);
+    assert(d == libbig::largeInt(999999));
 
-	return 0;
+    return 0;
 }
