@@ -34,8 +34,7 @@ jobs:
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake ..
-      run: make
+      run: cmake .. && make
 
     - name: Testing Operators
       working-directory: ${{runner.workspace}}/build/tests/operators
