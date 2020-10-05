@@ -32,5 +32,30 @@
 
 namespace libbig {
 
+  void operator = (largeINT a) {
+    this.number = a.number;
+    this.sign = a.sign;
+  }
+  void operator = (int a) {
+    this.number = std::to_string(a);
+    if (a < 0)
+       this.sign = true;
+    else
+       this.sign = false;
+  }
+  void operator = (int64_t a) {
+    this.number = std::to_string(a);
+    if (a < 0)
+       this.sign = true;
+    else
+       this.sign = false;
+  }
+  void operator = (long long a) {
+    this.number = std::to_string(a);
+    if (a < 0)
+       this.sign = true;
+    else
+       this.sign = false;
+  }
 } // namespace libbig
 
