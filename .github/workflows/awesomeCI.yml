@@ -13,29 +13,23 @@ jobs:
         run: | 
           sudo apt -qq -y update
           sudo apt -qq install clang-tidy-10 clang-format-10
-
+                    
   build:
     runs-on: ${{ matrix.os }}
     needs: [MainSequence]
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Configure CMake
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE
-
     - name: Build
-      working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake ..
-      run: make
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE && make
 
     - name: Testing Operators
       working-directory: ${{runner.workspace}}/build/tests/operators
