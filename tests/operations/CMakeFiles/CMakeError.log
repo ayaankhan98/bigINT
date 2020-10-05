@@ -1,0 +1,172 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+1
+Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 05-10-2020 06:32:04 PM.
+Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Debug\".
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+  Creating directory "Debug\CompilerIdC.tlog\".
+InitializeBuildStatus:
+  Creating "Debug\CompilerIdC.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X64 Debug\CMakeCCompilerId.obj
+LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+Done Building Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" (default targets) -- FAILED.
+
+Build FAILED.
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" (default target) (1) ->
+(PrepareForBuild target) -> 
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" (default target) (1) ->
+(Link target) -> 
+  LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:00.91
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+1
+Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 05-10-2020 06:32:05 PM.
+Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Debug\".
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+  Creating directory "Debug\CompilerIdC.tlog\".
+InitializeBuildStatus:
+  Creating "Debug\CompilerIdC.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X64 Debug\CMakeCCompilerId.obj
+LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+Done Building Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" (default targets) -- FAILED.
+
+Build FAILED.
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" (default target) (1) ->
+(PrepareForBuild target) -> 
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj" (default target) (1) ->
+(Link target) -> 
+  LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdC\CompilerIdC.vcxproj]
+
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:00.38
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+1
+Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 05-10-2020 06:32:05 PM.
+Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Debug\".
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+  Creating directory "Debug\CompilerIdCXX.tlog\".
+InitializeBuildStatus:
+  Creating "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X64 Debug\CMakeCXXCompilerId.obj
+LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+Done Building Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" (default targets) -- FAILED.
+
+Build FAILED.
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" (default target) (1) ->
+(PrepareForBuild target) -> 
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" (default target) (1) ->
+(Link target) -> 
+  LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:00.48
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+1
+Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 05-10-2020 06:32:06 PM.
+Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "Debug\".
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+  Creating directory "Debug\CompilerIdCXX.tlog\".
+InitializeBuildStatus:
+  Creating "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\HostX64\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X64 Debug\CMakeCXXCompilerId.obj
+LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+Done Building Project "C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" (default targets) -- FAILED.
+
+Build FAILED.
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" (default target) (1) ->
+(PrepareForBuild target) -> 
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(449,5): warning MSB8003: The WindowsSDKDir property is not defined. Some build tools may not be found. [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+
+
+"C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj" (default target) (1) ->
+(Link target) -> 
+  LINK : fatal error LNK1181: cannot open input file 'kernel32.lib' [C:\Users\anu23\Documents\bigint\bigINT\tests\operations\CMakeFiles\3.18.3\CompilerIdCXX\CompilerIdCXX.vcxproj]
+
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:00.40
+
+
