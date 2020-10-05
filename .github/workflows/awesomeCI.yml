@@ -13,12 +13,7 @@ jobs:
         run: | 
           sudo apt -qq -y update
           sudo apt -qq install clang-tidy-10 clang-format-10
-    
-      - name: cpp-linter
-        uses: ArtificialAmateur/clang-tidy-action@master
-    env:
-        GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
-          
+                    
   build:
     runs-on: ${{ matrix.os }}
     needs: [MainSequence]
