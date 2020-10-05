@@ -33,6 +33,13 @@
 
 namespace libbig
 {
+// sign = 1: positive number
+// sign = 0: negative number
+// flip if its reverse
+
+constexpr bool NEGATIVE = 0;
+constexpr bool POSITIVE = 1;
+
 class largeInt
 {
   private:
