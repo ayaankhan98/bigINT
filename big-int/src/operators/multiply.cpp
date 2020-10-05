@@ -30,12 +30,7 @@
 
 #include "../bigint.hpp"
 
-namespace libbig {
-    std::ostream& operator << (std::ostream& out, largeInt& z) {
-        if (!z.sign) {
-            out << '-';
-        }
-        out << z.number;
-        return out;
-    }
+namespace libbig
+{
+
 } // namespace libbig
