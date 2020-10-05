@@ -26,33 +26,24 @@
  */
 
 #include "../big-int/src/bigint.hpp"
-#include <fstream>
 #include <cassert>
 
 int main()
 {
-	// redirects input.txt contents to std::cin
-	freopen("input.txt", "r", stdin);
-	
-	libbig::largeInt a;
-
 	// tests default ctor
+	libbig::largeInt a;
 	assert(a == 0);
 
 	//tests std::string ctor
-	std::cin >> a;
-	assert(a == 42);
+	libbig::largeInt b("42");
+	assert(b == 42);
 
-	std::cin >> a;
-	long long tempValue = 3333333333333333333;
-	assert(a == tempValue);
+	libbig::largeInt c("3333333333333333333");
+	assert(c == (long long)3333333333333333333);
 
-	std::cin >> a;
-	assert(a == libbig::largeInt("1000000000000000000000000000000000000000000000000000"));
-
-	//tests int ctor
-	libbig::largeInt b(9999);
-	assert(b == 9999);
+	// tests int and long long ctors
+	libbig::largeInt d(999999);
+	assert(d == libbig::largeInt(999999));
 
 	return 0;
 }

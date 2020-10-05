@@ -63,7 +63,11 @@ bool largeInt::operator==(int z)
     }
     // checks if inputs have a different number of digits
     // by converting the absolume value of z to a string
-    std::string zStr = std::to_string(abs(z));
+    if (z < 0)
+    {
+        z *= -1;
+    }
+    std::string zStr = std::to_string(z);
     if (this->number.length() != zStr.length())
     {
         return false;
@@ -88,8 +92,12 @@ bool largeInt::operator==(long long int z)
         return false;
     }
     // checks if inputs have a different number of digits
-    // by converting the absolume value of z to a string
-    std::string zStr = std::to_string(abs(z));
+    // by converting the absolute value of z to a string
+    if (z < 0)
+    {
+        z *= -1;
+    }
+    std::string zStr = std::to_string(z);
     if (this->number.length() != zStr.length())
     {
         return false;
