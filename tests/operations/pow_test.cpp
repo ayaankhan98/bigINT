@@ -4,27 +4,22 @@
 #include "../../src/bigint.hpp"
 
 int main() {
-  freopen("power_test_input.txt", "r", stdin);
-
+// 3 4
+// 4 9
+// 7 11
   
-  int a, b;
-  std::cin >> a,b;
-  
-  libbig::largeInt * num=pow(a,b);
+  libbig::largeInt * num=pow(3,4);
 
   assert(num->number == "81");
   
   
-  std::cin >> a,b;
   
-  libbig::largeInt * num=pow(a,b);
+  libbig::largeInt * num=pow(4,9);
 
   assert(num->number == "262144");
   
   
-  std::cin >> a,b;
-  
-  libbig::largeInt * num=pow(a,b);
+  libbig::largeInt * num=pow(7,11);
 
   assert(num->number == "1977326743");
 
