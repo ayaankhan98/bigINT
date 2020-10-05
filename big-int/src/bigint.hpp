@@ -31,8 +31,10 @@
 #include <iostream>
 #include <string>
 
-namespace libbig {
-class largeInt {
+namespace libbig
+{
+class largeInt
+{
   private:
     bool sign;
     std::string number;
