@@ -46,7 +46,7 @@ class largeInt
 
     explicit largeInt(int);
     explicit largeInt(long long int);
-    largeInt(std::string);
+    explicit largeInt(std::string);
 
     largeInt operator+(largeInt);
     largeInt operator+(int);
