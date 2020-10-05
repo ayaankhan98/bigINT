@@ -31,6 +31,25 @@
 #include "../bigint.hpp"
 
 namespace libbig {
-
+    bool largeInt:: operator != (largeInt z){
+        if (this->sign != z.sign){
+            return true;
+        }
+        if (this->number.length() != z.number.length())
+        {
+            return true;
+        }
+        
+        for (int  i = 0;  i< this->number.length() ; i++)
+        {
+            if (this->number[i] != z.number[i])
+            {
+                return true;
+            }
+            
+        }
+        return false;
+        
+    }
 } // namespace libbig
 
