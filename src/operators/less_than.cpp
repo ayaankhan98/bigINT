@@ -32,12 +32,12 @@
 
 namespace libbig {
   bool largeInt:: operator < (const largeInt& z) {
-    // sign = 0: positive number
-    // sign = 1: negative number
+    // sign = 1: positive number
+    // sign = 0: negative number
     // flip if its reverse
 
-    int NEGATIVE = 1;
-    int POSITIVE = 0;
+    bool NEGATIVE = 0;
+    bool POSITIVE = 1;
 
     if (this->sign == NEGATIVE) {
       if (z.sign == POSITIVE){
