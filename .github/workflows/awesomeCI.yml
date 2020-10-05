@@ -19,28 +19,6 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          
-      - name: Filename Formatter
-        run: |
-          IFS=$'\n'
-          for fname in `find . -type f -name '*.cpp' -o -name '*.cc' -o -name '*.h'`
-          do 
-            echo "${fname}"
-            new_fname=`echo ${fname} | tr ' ' '_'`
-            echo "      ${new_fname}"
-            new_fname=`echo ${new_fname} | tr 'A-Z' 'a-z'`
-            echo "      ${new_fname}"
-            new_fname=`echo ${new_fname} | tr '-' '_'`
-            echo "      ${new_fname}"
-            new_fname=${new_fname/.cc/.cpp}
-            echo "      ${new_fname}"
-            if [ ${fname} != ${new_fname} ]
-            then
-              echo "      ${fname} --> ${new_fname}"
-              git "mv" "${fname}" ${new_fname}
-            fi
-          done
-          git commit -am "formatting filenames ${GITHUB_SHA::8}" ||  true
       
       - name: Get file changes
         run: |
