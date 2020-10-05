@@ -31,94 +31,96 @@
 #include <iostream>
 #include <string>
 
-namespace libbig {
-  class largeInt {
-    private:
-      bool sign;
-      std::string number;
+namespace libbig
+{
+class largeInt
+{
+  private:
+    bool sign;
+    std::string number;
 
-    public:
-      largeInt();
+  public:
+    largeInt();
 
-      largeInt(int);
-      largeInt(long long int);
-      largeInt(std::string);
+    largeInt(int);
+    largeInt(long long int);
+    largeInt(std::string);
 
-      largeInt operator + (largeInt);
-      largeInt operator + (int);
-      largeInt operator + (long long int);
+    largeInt operator+(largeInt);
+    largeInt operator+(int);
+    largeInt operator+(long long int);
 
-      largeInt operator - (largeInt);
-      largeInt operator - (int);
-      largeInt operator - (long long int);
+    largeInt operator-(largeInt);
+    largeInt operator-(int);
+    largeInt operator-(long long int);
 
-      largeInt operator * (largeInt);
-      largeInt operator * (int);
-      largeInt operator * (long long int);
+    largeInt operator*(largeInt);
+    largeInt operator*(int);
+    largeInt operator*(long long int);
 
-      largeInt operator / (largeInt);
-      largeInt operator / (int);
-      largeInt operator / (long long int);
+    largeInt operator/(largeInt);
+    largeInt operator/(int);
+    largeInt operator/(long long int);
 
-      largeInt operator % (largeInt);
-      largeInt operator % (int);
-      largeInt operator % (long long int);
+    largeInt operator%(largeInt);
+    largeInt operator%(int);
+    largeInt operator%(long long int);
 
-      largeInt &operator += (largeInt);
-      largeInt &operator += (int);
-      largeInt &operator += (long long int);
+    largeInt &operator+=(largeInt);
+    largeInt &operator+=(int);
+    largeInt &operator+=(long long int);
 
-      largeInt &operator -= (largeInt);
-      largeInt &operator -= (int);
-      largeInt &operator -= (long long int);
+    largeInt &operator-=(largeInt);
+    largeInt &operator-=(int);
+    largeInt &operator-=(long long int);
 
-      largeInt &operator *= (largeInt);
-      largeInt &operator *= (int);
-      largeInt &operator *= (long long int);
+    largeInt &operator*=(largeInt);
+    largeInt &operator*=(int);
+    largeInt &operator*=(long long int);
 
-      largeInt &operator /= (largeInt);
-      largeInt &operator /= (int);
-      largeInt &operator /= (long long int);
+    largeInt &operator/=(largeInt);
+    largeInt &operator/=(int);
+    largeInt &operator/=(long long int);
 
-      largeInt operator %= (largeInt);
-      largeInt operator %= (int);
-      largeInt operator %= (long long int);
- 
-      //   PREFIX OPERATORS
+    largeInt operator%=(largeInt);
+    largeInt operator%=(int);
+    largeInt operator%=(long long int);
 
-      //   POSTFIX OPERATORS
+    //   PREFIX OPERATORS
 
-      void operator = (largeInt);
-      void operator = (int);
-      void operator = (long long int);
+    //   POSTFIX OPERATORS
 
-      bool operator == (const largeInt&);
-      bool operator == (int);
-      bool operator == (long long int);
+    void operator=(largeInt);
+    void operator=(int);
+    void operator=(long long int);
 
-      bool operator != (largeInt);
-      bool operator != (int);
-      bool operator != (long long int);
+    bool operator==(const largeInt &);
+    bool operator==(int);
+    bool operator==(long long int);
 
-      bool operator < (largeInt);
-      bool operator < (int);
-      bool operator < (long long int);
+    bool operator!=(largeInt);
+    bool operator!=(int);
+    bool operator!=(long long int);
 
-      bool operator > (largeInt);
-      bool operator > (int);
-      bool operator > (long long int);
+    bool operator<(largeInt);
+    bool operator<(int);
+    bool operator<(long long int);
 
-      bool operator <= (largeInt);
-      bool operator <= (int);
-      bool operator <= (long long int);
+    bool operator>(largeInt);
+    bool operator>(int);
+    bool operator>(long long int);
 
-      bool operator >= (largeInt);
-      bool operator >= (int);
-      bool operator >= (long long int);
+    bool operator<=(largeInt);
+    bool operator<=(int);
+    bool operator<=(long long int);
 
-      friend std::istream &operator >> (std::istream &, largeInt &);
-      friend std::ostream &operator << (std::ostream &, largeInt &);
-  };
+    bool operator>=(largeInt);
+    bool operator>=(int);
+    bool operator>=(long long int);
+
+    friend std::istream &operator>>(std::istream &, largeInt &);
+    friend std::ostream &operator<<(std::ostream &, largeInt &);
+};
 } // namespace libbig
 
 #endif

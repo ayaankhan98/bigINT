@@ -30,6 +30,7 @@
 
 #include "../bigint.hpp"
 
-namespace libbig {
+namespace libbig
+{
 
 } // namespace libbig
