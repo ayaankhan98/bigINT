@@ -4,13 +4,20 @@ on: [push, pull_request]
 
 jobs:
   MainSequence:
-    name: cpp-linter
+    name: Code Formatter
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v2
+      - name: requirements
+        run: | 
+          sudo apt -qq -y update
+          sudo apt -qq install clang-tidy-10 clang-format-10
+    
       - name: cpp-linter
         uses: ArtificialAmateur/clang-tidy-action@master
     env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
           
   build:
     runs-on: ${{ matrix.os }}
