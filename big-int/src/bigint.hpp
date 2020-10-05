@@ -41,10 +41,10 @@ class largeInt
 
   public:
     largeInt();
-    largeInt(int);
-    largeInt(int64_t);
-    largeInt(long long);
-    largeInt(std::string);
+    explicit largeInt(int);
+    explicit largeInt(int64_t);
+    explicit largeInt(long long);
+    explicit largeInt(std::string);
 
     largeInt operator+(largeInt);
     largeInt operator+(int);
@@ -100,10 +100,10 @@ class largeInt
 
     //   POSTFIX OPERATORS
 
-    void operator=(const largeInt &);
-    void operator=(int);
-    void operator=(int64_t);
-    void operator=(long long);
+    largeInt& operator=(const largeInt &);
+    largeInt& operator=(int);
+    largeInt& operator=(int64_t);
+    largeInt& operator=(long long);
 
     bool operator==(const largeInt &);
     bool operator==(int);
