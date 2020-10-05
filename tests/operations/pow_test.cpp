@@ -4,7 +4,7 @@
 #include "../../src/bigint.hpp"
 
 int main() {
-  freopen("input.txt", "r", stdin);
+  freopen("power_test_input.txt", "r", stdin);
 
   
   int a, b;
