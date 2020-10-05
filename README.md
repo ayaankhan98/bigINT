@@ -1,4 +1,5 @@
 [![codecov](https://codecov.io/gh/ayaankhan98/bigINT/branch/main/graph/badge.svg)](https://codecov.io/gh/ayaankhan98/bigINT)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ef219f076b1a4fb184fba0108c3ea3c5)](https://www.codacy.com/gh/ayaankhan98/bigINT/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ayaankhan98/bigINT&amp;utm_campaign=Badge_Grade)
 # bigINT
 Big Integer(Library) Support for C++
 
@@ -38,7 +39,44 @@ We aim to build a library for C++ 17 or above for big integer support
 
 - Feel free to give suggestions or point bugs by rasing issues
 
-#### Required setup
+## Required Tools
 - CMake 3.16.8 or above
-- GCC 9
-- C++ 17
+( you can download CMake from [here](https://cmake.org/download/) )
+- GCC 7.5.0 or above
+
+## Installation
+
+```
+# fork the repository in your account
+# clone the forked repository on your system
+
+git clone https://github.com/[username]/bigINT.git
+
+# for building the project locally make a build directory
+
+mkdir build && cd build
+
+# configure the project using CMake
+
+cmake ..
+
+# after configuration run
+
+make
+
+## for running tests go to /scripts and execute
+
+sh test_runner.sh
+
+# or alternatively you can use
+
+# for running tests of operators
+
+cd build/tests/operators
+ctest
+
+# for running tests of operations
+
+cd build/tests/operations
+ctest
+```
