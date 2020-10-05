@@ -29,37 +29,37 @@
 
 namespace libbig {
 	largeInt::largeInt() {
-		this->sign = 1;
+		this->sign = POSITIVE;
 		this->number = "0";
 	}
 
 	largeInt::largeInt(int nValue) {
 		if (nValue < 0) {
-			this->sign = 0;
+			this->sign = NEGATIVE;
 			nValue *= -1;
 		} else {
-			this->sign = 1;
+			this->sign = POSITIVE;
 		}
 		this->number = std::to_string(nValue);
 	}
 
 	largeInt::largeInt(long long nValue) {
 		if (nValue < 0) {
-			this->sign = 0;
+			this->sign = NEGATIVE;
 			nValue *= -1;
 		} else {
-			this->sign = 1;
+			this->sign = POSITIVE;
 		}
 		this->number = std::to_string(nValue);
 	}
 
 	largeInt::largeInt(std::string nValue) {
 		if (nValue.front() == '-') {
-			this->sign = 0;
-			nValue.erase(nValue.begin());
+			this->sign = NEGATIVE;
+			this->number = std::string(nValue.begin() + 1, nValue.end());
 		} else {
-			this->sign = 1;
+			this->sign = POSITIVE;
+			this->number = nValue;
 		}
-		this->number = nValue;
 	}
 } // namespace libbig

@@ -32,7 +32,7 @@
 
 namespace libbig {
     std::ostream& operator << (std::ostream& out, largeInt& z) {
-        if (!z.sign) {
+        if (z.sign == NEGATIVE) {
             out << '-';
         }
         out << z.number;

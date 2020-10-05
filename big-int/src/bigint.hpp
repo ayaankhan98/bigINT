@@ -32,6 +32,8 @@
 #include <string>
 
 namespace libbig {
+  constexpr bool POSITIVE = true;
+  constexpr bool NEGATIVE = false;
   class largeInt {
     private:
       bool sign;
@@ -40,8 +42,8 @@ namespace libbig {
     public:
       largeInt();
 
-      largeInt(int);
-      largeInt(long long int);
+      explicit largeInt(int);
+      explicit largeInt(long long int);
       largeInt(std::string);
 
       largeInt operator + (largeInt);
