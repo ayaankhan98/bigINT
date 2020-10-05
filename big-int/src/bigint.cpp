@@ -31,12 +31,14 @@ namespace libbig
 {
 largeInt::largeInt()
 {
+    // initializes object with 0
     this->sign = POSITIVE;
     this->number = "0";
 }
 
 largeInt::largeInt(int nValue)
 {
+    // checks if input is negative and initializes object with input
     if (nValue < 0)
     {
         this->sign = NEGATIVE;
@@ -51,6 +53,7 @@ largeInt::largeInt(int nValue)
 
 largeInt::largeInt(long long nValue)
 {
+    // checks if input is negative and initializes object with input
     if (nValue < 0)
     {
         this->sign = NEGATIVE;
@@ -65,6 +68,7 @@ largeInt::largeInt(long long nValue)
 
 largeInt::largeInt(std::string nValue)
 {
+    // checks if input string starts with a minus and initializes object with input
     if (nValue.front() == '-')
     {
         this->sign = NEGATIVE;

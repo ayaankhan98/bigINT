@@ -33,6 +33,8 @@
 
 namespace libbig
 {
+// constants used with the bool largeInt::sign attribute
+// this->sign = POSITIVE; instead of this->sign = true;
 constexpr bool POSITIVE = true;
 constexpr bool NEGATIVE = false;
 class largeInt

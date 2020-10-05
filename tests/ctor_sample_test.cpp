@@ -25,21 +25,34 @@
  *
  */
 
-#include <istream>
-#include <ostream>
+#include "../big-int/src/bigint.hpp"
+#include <fstream>
+#include <cassert>
 
-#include "../bigint.hpp"
+int main()
+{
+	// redirects input.txt contents to std::cin
+	freopen("input.txt", "r", stdin);
+	
+	libbig::largeInt a;
 
-namespace libbig
-{
-std::ostream &operator<<(std::ostream &out, largeInt &z)
-{
-    // checks if this->sign is negative, then inserts number in ostream
-    if (z.sign == NEGATIVE)
-    {
-        out << '-';
-    }
-    out << z.number;
-    return out;
+	// tests default ctor
+	assert(a == 0);
+
+	//tests std::string ctor
+	std::cin >> a;
+	assert(a == 42);
+
+	std::cin >> a;
+	long long tempValue = 3333333333333333333;
+	assert(a == tempValue);
+
+	std::cin >> a;
+	assert(a == libbig::largeInt("1000000000000000000000000000000000000000000000000000"));
+
+	//tests int ctor
+	libbig::largeInt b(9999);
+	assert(b == 9999);
+
+	return 0;
 }
-} // namespace libbig

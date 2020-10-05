@@ -44,6 +44,8 @@ bool largeInt::operator==(const largeInt &z)
     }
     for (int i = 0; i < this->number.length(); i++)
     {
+        // iterates through all digits of both inputs
+        // if two digits are not the same, returns false
         if (this->number[i] != z.number[i])
         {
             return false;
@@ -51,4 +53,57 @@ bool largeInt::operator==(const largeInt &z)
     }
     return true;
 }
+
+bool largeInt::operator==(int z)
+{
+    // checks if both inputs have the same sign (positive or negative)
+    if (this->sign != (z >= 0))
+    {
+        return false;
+    }
+    // checks if inputs have a different number of digits
+    // by converting the absolume value of z to a string
+    std::string zStr = std::to_string(abs(z));
+    if (this->number.length() != zStr.length())
+    {
+        return false;
+    }
+    for (int i = 0; i < this->number.length(); i++)
+    {
+        // iterates through all digits of both inputs
+        // if two digits are not the same, returns false
+        if (this->number[i] != zStr[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool largeInt::operator==(long long int z)
+{
+    // checks if both inputs have the same sign (positive or negative)
+    if (this->sign != (z >= 0))
+    {
+        return false;
+    }
+    // checks if inputs have a different number of digits
+    // by converting the absolume value of z to a string
+    std::string zStr = std::to_string(abs(z));
+    if (this->number.length() != zStr.length())
+    {
+        return false;
+    }
+    for (int i = 0; i < this->number.length(); i++)
+    {
+        // iterates through all digits of both inputs
+        // if two digits are not the same, returns false
+        if (this->number[i] != zStr[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 } // namespace libbig
