@@ -25,32 +25,25 @@
  *
  */
 
-#include <istream>
-#include <ostream>
-
 #include <bigint.hpp>
+#include <cassert>
 
-namespace libbig
+int main()
 {
-largeInt &largeInt::operator=(const largeInt &x)
-{
-    sign = x.sign;
-    number = x.number;
-    return *this;
+    libbig::largeInt a(20);
+    libbig::largeInt b = a;
+    assert(b == 20);
+    assert(b == a);
+
+    b = libbig::largeInt(-100000);
+    a = b;
+    assert(a == -100000);
+    assert(a == b);
+
+    b = libbig::largeInt("1000000000");
+    a = b;
+    assert(a == 1000000000);
+    assert(a == b);
+    
+    return 0;
 }
-
-largeInt &largeInt::operator=(int x)
-{
-    sign = x >= 0;
-    number = std::to_string(std::abs(x));
-    return *this;
-}
-
-largeInt &largeInt::operator=(int64_t x)
-{
-    sign = x >= 0;
-    number = std::to_string(std::abs(x));
-    return *this;
-}
-
-} // namespace libbig
