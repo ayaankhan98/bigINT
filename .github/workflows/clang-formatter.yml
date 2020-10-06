@@ -1,8 +1,8 @@
-on: [push,pull_request]
+on: [push, pull_request]
 jobs:
   autoformat_job:
     runs-on: ubuntu-latest
-    name: clang formatting
+    name: clang formatter
     steps:
     - name: Checkout
       uses: actions/checkout@v2

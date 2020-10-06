@@ -1,6 +1,6 @@
 name: Awesome CI Workflow
 
-on: [push, pull_request, pull_request_review, pull_request_review_comment]
+on: [push, pull_request]
 
 jobs:
   MainSequence:
@@ -19,7 +19,7 @@ jobs:
     needs: [MainSequence]
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
     - uses: actions/checkout@v2
 
@@ -31,15 +31,15 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: cmake $GITHUB_WORKSPACE && make
 
-    - name: Testing Operators
-      working-directory: ${{runner.workspace}}/build/tests/operators
-      shell: bash
-      run: ctest
+    # - name: Testing Operators
+    #   working-directory: ${{runner.workspace}}/build/tests/operators
+    #   shell: bash
+    #   run: ctest
 
-    - name: Testing Operations
-      working-directory: ${{runner.workspace}}/build/tests/operations
-      shell: bash
-      run: ctest
+    # - name: Testing Operations
+    #   working-directory: ${{runner.workspace}}/build/tests/operations
+    #   shell: bash
+    #   run: ctest
     
     - name: Running Tests
       working-directory: ${{runner.workspace}}/build

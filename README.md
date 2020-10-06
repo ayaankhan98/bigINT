@@ -1,4 +1,6 @@
-<center><img src="examples/logo.png"></img></center>
+<p align="center">
+  <img src="examples/logo.png"></img>
+</p>
 
 <br/>
 
