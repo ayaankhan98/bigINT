@@ -32,5 +32,40 @@
 
 namespace libbig
 {
-
+  bool largeInt:: operator < (const largeInt& z) {
+    if (this->sign == NEGATIVE) {
+      if (z.sign == POSITIVE){
+        return true;
+      } else if (z.sign == NEGATIVE){
+        if (this->number.length() > z.number.length()){
+          return true;
+        }
+        if (this->number.length() < z.number.length()){
+          return false;
+        }
+        for(int i = 0; i < this->number.length(); i++) {
+          if (this->number[i] < z.number[i]) {
+            return false;
+          }
+        }
+      }
+    } else if (this->sign == POSITIVE) {
+      if (z.sign == NEGATIVE){
+        return false;
+      } else if (z.sign == POSITIVE){
+        if (this->number.length() < z.number.length()){
+          return true;
+        }
+        if (this->number.length() > z.number.length()){
+          return false;
+        }
+        for(int i = 0; i < this->number.length(); i++) {
+          if (this->number[i] > z.number[i]) {
+            return false;
+          }
+        }
+      }
+    }
+    return false;
+  }
 } // namespace libbig
