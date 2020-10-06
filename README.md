@@ -6,6 +6,9 @@
 
 [![codecov](https://codecov.io/gh/ayaankhan98/bigINT/branch/main/graph/badge.svg)](https://codecov.io/gh/ayaankhan98/bigINT)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ef219f076b1a4fb184fba0108c3ea3c5)](https://www.codacy.com/gh/ayaankhan98/bigINT/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ayaankhan98/bigINT&amp;utm_campaign=Badge_Grade)
+[![License: BSL](https://img.shields.io/badge/License-BSL-green.svg)](https://github.com/ayaankhan98/bigINT/blob/main/LICENSE)
+![GitHub forks](https://img.shields.io/github/forks/ayaankhan98/bigINT?style=social)
+
 # bigINT
 Big Integer(Library) Support for C++
 
