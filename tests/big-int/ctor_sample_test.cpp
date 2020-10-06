@@ -25,11 +25,12 @@
  *
  */
 
-#include "../big-int/src/bigint.hpp"
+#include <bigint.hpp>
 #include <cassert>
 
 int main()
 {
+<<<<<<< HEAD:tests/ctor_sample_test.cpp
 	// tests default ctor
 	libbig::largeInt a;
 	assert(a == libbig::largeInt(0));
@@ -43,5 +44,5 @@ int main()
 	libbig::largeInt c((long long)3333333333333333333);
 	assert(c == libbig::largeInt("3333333333333333333"));
 	std::cout << "Third test passed." << std::endl;
-	return 0;
+	return -1;
 }
