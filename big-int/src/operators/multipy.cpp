@@ -32,18 +32,5 @@
 
 namespace libbig
 {
-largeInt &largeInt::operator=(const largeInt &x)
-{
-    sign = x.sign;
-    number = x.number;
-    return *this;
-}
-
-largeInt &largeInt::operator=(int x)
-{
-    sign = x >= 0;
-    number = std::to_string(std::abs(x));
-    return *this;
-}
 
 } // namespace libbig

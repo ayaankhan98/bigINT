@@ -44,6 +44,8 @@ bool largeInt::operator==(const largeInt &z)
     }
     for (int i = 0; i < this->number.length(); i++)
     {
+        // iterates through all digits of both inputs
+        // if two digits are not the same, returns false
         if (this->number[i] != z.number[i])
         {
             return false;
@@ -51,4 +53,52 @@ bool largeInt::operator==(const largeInt &z)
     }
     return true;
 }
+
+bool largeInt::operator==(int z)
+{
+    // checks if both inputs have the same sign (positive or negative)
+    if (this->sign != (z >= 0))
+    {
+        return false;
+    }
+    // iterates through each digit, starting by the last
+    // if two digits are not the same, returns false
+    z = std::abs(z);
+    int n = this->number.length() - 1;
+    while (z != 0 && n != 0)
+    {   
+        if (this->number[n] - '0' != z % 10)
+        {
+            return false;
+        }
+        std:: cout << z << std::endl;
+        z /= 10;
+        n--;
+    }
+    return true;
+}
+
+bool largeInt::operator==(int64_t z)
+{
+    // checks if both inputs have the same sign (positive or negative)
+    if (this->sign != (z >= 0))
+    {
+        return false;
+    }
+    // iterates through each digit, starting by the last
+    // if two digits are not the same, returns false
+    z = std::abs(z);
+    int n = this->number.length() - 1;
+    while (z != 0)
+    {
+        if (this->number[n] - '0' != z % 10)
+        {
+            return false;
+        }
+        z /= 10;
+        n--;
+    }
+    return true;
+}
+
 } // namespace libbig

@@ -34,7 +34,8 @@ namespace libbig
 {
 std::ostream &operator<<(std::ostream &out, const largeInt &z)
 {
-    if (!z.sign)
+    // checks if this->sign is negative, then inserts number in ostream
+    if (z.sign == NEGATIVE)
     {
         out << '-';
     }

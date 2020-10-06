@@ -19,24 +19,44 @@ jobs:
     needs: [MainSequence]
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macOS-latest]
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{runner.workspace}}/build
+      
+      - name: Build
+        shell: bash
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE && make
+      
+      - name: Running Tests
+        working-directory: ${{runner.workspace}}/build
+        shell: bash
+        run: ctest
+    
+    
+    
+    
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest, windows-latest, macOS-latest]
+    # steps:
+    # - uses: actions/checkout@v2
 
-    - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Build
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE && make
 
-    - name: Testing Operators
-      working-directory: ${{runner.workspace}}/build/tests/operators
-      shell: bash
-      run: ctest
 
-    - name: Testing Operations
-      working-directory: ${{runner.workspace}}/build/tests/operations
-      shell: bash
-      run: ctest
+
+#     - name: Testing Operators
+    #   working-directory: ${{runner.workspace}}/build/tests/operators
+    #   shell: bash
+    #   run: ctest
+
+    # - name: Testing Operations
+    #   working-directory: ${{runner.workspace}}/build/tests/operations
+    #   shell: bash
+    #   run: ctest
+      
+      
+

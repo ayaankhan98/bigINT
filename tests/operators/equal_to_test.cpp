@@ -25,25 +25,25 @@
  *
  */
 
-#include <istream>
-#include <ostream>
+#include <bigint.hpp>
+#include <cassert>
 
-#include "../bigint.hpp"
+int main()
+{
+    // tests default ctor
+    libbig::largeInt a;
+    assert(a == 0);
 
-namespace libbig
-{
-largeInt &largeInt::operator=(const largeInt &x)
-{
-    sign = x.sign;
-    number = x.number;
-    return *this;
+    // tests std::string ctor
+    libbig::largeInt b("42");
+    assert(b == 42);
+
+    libbig::largeInt c("3333333333333333333");
+    assert(c == (int64_t)3333333333333333333);
+
+    // // tests int and long long ctors
+    libbig::largeInt d(999999);
+    assert(d == libbig::largeInt(999999));
+    
+    return 0;
 }
-
-largeInt &largeInt::operator=(int x)
-{
-    sign = x >= 0;
-    number = std::to_string(std::abs(x));
-    return *this;
-}
-
-} // namespace libbig
