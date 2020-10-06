@@ -52,43 +52,43 @@ class largeInt
 
     largeInt operator+(largeInt);
     largeInt operator+(int);
-    largeInt operator+(long long int);
+    largeInt operator+(int64_t);
 
     largeInt operator-(largeInt);
     largeInt operator-(int);
-    largeInt operator-(long long int);
+    largeInt operator-(int64_t);
 
     largeInt operator*(largeInt);
     largeInt operator*(int);
-    largeInt operator*(long long int);
+    largeInt operator*(int64_t);
 
     largeInt operator/(largeInt);
     largeInt operator/(int);
-    largeInt operator/(long long int);
+    largeInt operator/(int64_t);
 
     largeInt operator%(largeInt);
     largeInt operator%(int);
-    largeInt operator%(long long int);
+    largeInt operator%(int64_t);
 
     largeInt &operator+=(largeInt);
     largeInt &operator+=(int);
-    largeInt &operator+=(long long int);
+    largeInt &operator+=(int64_t);
 
     largeInt &operator-=(largeInt);
     largeInt &operator-=(int);
-    largeInt &operator-=(long long int);
+    largeInt &operator-=(int64_t);
 
     largeInt &operator*=(largeInt);
     largeInt &operator*=(int);
-    largeInt &operator*=(long long int);
+    largeInt &operator*=(int64_t);
 
     largeInt &operator/=(largeInt);
     largeInt &operator/=(int);
-    largeInt &operator/=(long long int);
+    largeInt &operator/=(int64_t);
 
     largeInt operator%=(largeInt);
     largeInt operator%=(int);
-    largeInt operator%=(long long int);
+    largeInt operator%=(int64_t);
 
     //   PREFIX OPERATORS
 
@@ -96,31 +96,31 @@ class largeInt
 
     void operator=(largeInt);
     void operator=(int);
-    void operator=(long long int);
+    void operator=(int64_t);
 
     bool operator==(const largeInt &);
     bool operator==(int);
-    bool operator==(long long int);
+    bool operator==(int64_t);
 
     bool operator!=(largeInt);
     bool operator!=(int);
-    bool operator!=(long long int);
+    bool operator!=(int64_t);
 
     bool operator<(largeInt);
     bool operator<(int);
-    bool operator<(long long int);
+    bool operator<(int64_t);
 
     bool operator>(largeInt);
     bool operator>(int);
-    bool operator>(long long int);
+    bool operator>(int64_t);
 
     bool operator<=(largeInt);
     bool operator<=(int);
-    bool operator<=(long long int);
+    bool operator<=(int64_t);
 
     bool operator>=(largeInt);
     bool operator>=(int);
-    bool operator>=(long long int);
+    bool operator>=(int64_t);
 
     friend std::istream &operator>>(std::istream &, largeInt &);
     friend std::ostream &operator<<(std::ostream &, largeInt &);

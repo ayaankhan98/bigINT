@@ -39,7 +39,7 @@ int main()
     assert(b == 42);
 
     libbig::largeInt c("3333333333333333333");
-    assert(c == (long long)3333333333333333333);
+    assert(c == (int64_t)3333333333333333333);
 
     // // tests int and long long ctors
     libbig::largeInt d(999999);

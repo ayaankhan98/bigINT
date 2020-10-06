@@ -78,7 +78,7 @@ bool largeInt::operator==(int z)
     return true;
 }
 
-bool largeInt::operator==(long long int z)
+bool largeInt::operator==(int64_t z)
 {
     // checks if both inputs have the same sign (positive or negative)
     if (this->sign != (z >= 0))
