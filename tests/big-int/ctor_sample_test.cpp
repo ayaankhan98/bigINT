@@ -25,7 +25,7 @@
  *
  */
 
-#include "../big-int/src/bigint.hpp"
+#include <bigint.hpp>
 #include <cassert>
 
 int main()
@@ -45,5 +45,5 @@ int main()
     libbig::largeInt d(999999);
     assert(d == libbig::largeInt(999999));
 
-    return 0;
+    return -1;
 }
