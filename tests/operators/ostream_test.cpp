@@ -9,7 +9,7 @@ int main()
 {
     libbig::largeInt a;
     std::stringstream buffer;
-    std::ifstream f("./tests/operators/input.txt");
+    std::ifstream f("input.txt");
     std::string line;
 
     if (f.is_open())
@@ -22,6 +22,8 @@ int main()
             buffer.str(std::string());
         }
         f.close();
+    } else {
+        throw std::runtime_error("Couldn't open input.txt");
     }
 
     return 0;
