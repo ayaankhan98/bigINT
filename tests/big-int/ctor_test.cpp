@@ -30,7 +30,6 @@
 
 int main()
 {
-<<<<<<< HEAD:tests/ctor_sample_test.cpp
 	// tests default ctor
 	libbig::largeInt a;
 	assert(a == libbig::largeInt(0));
