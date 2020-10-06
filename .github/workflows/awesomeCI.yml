@@ -24,6 +24,9 @@ jobs:
       - uses: actions/checkout@master
         with:
           submodules: true
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{runner.workspace}}/build
+
       - run: cmake -B ./build -S .
       - run: cmake --build build
       
@@ -33,8 +36,7 @@ jobs:
     # steps:
     # - uses: actions/checkout@v2
 
-    # - name: Create Build Environment
-    #   run: cmake -E make_directory ${{runner.workspace}}/build
+
 
     # - name: Build
     #   shell: bash
