@@ -45,5 +45,5 @@ int main()
     libbig::largeInt d(999999);
     assert(d == libbig::largeInt(999999));
 
-    return -1;
+    return 0;
 }
