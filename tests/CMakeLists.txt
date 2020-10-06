@@ -1,6 +1,8 @@
 add_subdirectory(operators)
 add_subdirectory(operations)
 add_subdirectory(regex)
+add_subdirectory(big-int)
+
 enable_testing()
 file( GLOB TEST_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 foreach(testsourcefile ${TEST_SOURCES})
@@ -8,7 +10,3 @@ foreach(testsourcefile ${TEST_SOURCES})
     add_executable( ${testname} ${testsourcefile} )
     target_link_libraries( ${testname} big-int )
 endforeach()
-
-add_subdirectory(operators)
-add_subdirectory(operations)
-add_subdirectory(big-int)
