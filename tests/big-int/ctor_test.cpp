@@ -30,18 +30,18 @@
 
 int main()
 {
-	// tests default ctor
-	libbig::largeInt a;
-	assert(a == libbig::largeInt(0));
-	std::cout << "First test passed." << std::endl;
+    // tests default ctor
+    libbig::largeInt a;
+    assert(a == libbig::largeInt(0));
+    std::cout << "First test passed." << std::endl;
 
-	//tests std::string and int ctor
-	libbig::largeInt b("42");
-	assert(b == libbig::largeInt(42));
-	std::cout << "Second test passed." << std::endl;
+    // tests std::string and int ctor
+    libbig::largeInt b("42");
+    assert(b == libbig::largeInt(42));
+    std::cout << "Second test passed." << std::endl;
 
-	libbig::largeInt c((long long)3333333333333333333);
-	assert(c == libbig::largeInt("3333333333333333333"));
-	std::cout << "Third test passed." << std::endl;
-	return 0;
+    libbig::largeInt c((long long)3333333333333333333);
+    assert(c == libbig::largeInt("3333333333333333333"));
+    std::cout << "Third test passed." << std::endl;
+    return 0;
 }
