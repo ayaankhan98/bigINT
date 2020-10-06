@@ -43,5 +43,5 @@ int main()
 	libbig::largeInt c((long long)3333333333333333333);
 	assert(c == libbig::largeInt("3333333333333333333"));
 	std::cout << "Third test passed." << std::endl;
-	return -1;
+	return 0;
 }
