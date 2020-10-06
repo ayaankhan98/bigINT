@@ -25,21 +25,20 @@
  *
  */
 
-#include <istream>
-#include <ostream>
+#include <bigint.hpp>
+#include <cassert>
 
-#include "../bigint.hpp"
+int main()
+{
+    // tests default ctor
+    libbig::largeInt a;
+    assert(a == libbig::largeInt(0));
+    
+    // tests std::string and int ctor
+    libbig::largeInt b("42");
+    assert(b == libbig::largeInt(42));
 
-namespace libbig
-{
-std::ostream &operator<<(std::ostream &out, largeInt &z)
-{
-    // checks if this->sign is negative, then inserts number in ostream
-    if (z.sign == NEGATIVE)
-    {
-        out << '-';
-    }
-    out << z.number;
-    return out;
+    libbig::largeInt c((long long)3333333333333333333);
+    assert(c == libbig::largeInt("3333333333333333333"));
+    return 0;
 }
-} // namespace libbig

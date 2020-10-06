@@ -34,10 +34,10 @@ namespace libbig
 {
 std::istream &operator>>(std::istream &inp, largeInt &z)
 {
-    std::cin >> z.number;
+    inp >> z.number;
     if (z.number[0] == '-')
     {
-        z.sign = false;
+        z.sign = NEGATIVE;
         std::string temporary = std::string(z.number.begin() + 1, z.number.end());
         z.number.clear();
         z.number = std::string(temporary.begin(), temporary.end());
@@ -45,7 +45,7 @@ std::istream &operator>>(std::istream &inp, largeInt &z)
     }
     else
     {
-        z.sign = true;
+        z.sign = POSITIVE;
     }
     return inp;
 }

@@ -25,21 +25,59 @@
  *
  */
 
-#include <istream>
-#include <ostream>
-
-#include "../bigint.hpp"
+#include "bigint.hpp"
 
 namespace libbig
 {
-std::ostream &operator<<(std::ostream &out, largeInt &z)
+largeInt::largeInt()
 {
-    // checks if this->sign is negative, then inserts number in ostream
-    if (z.sign == NEGATIVE)
+    // initializes object with 0
+    this->sign = POSITIVE;
+    this->number = "0";
+}
+
+largeInt::largeInt(int nValue)
+{
+    // checks if input is negative and initializes object with input
+    if (nValue < 0)
     {
-        out << '-';
+        this->sign = NEGATIVE;
+        nValue *= -1;
     }
-    out << z.number;
-    return out;
+    else
+    {
+        this->sign = POSITIVE;
+    }
+    this->number = std::to_string(nValue);
+}
+
+largeInt::largeInt(long long nValue)
+{
+    // checks if input is negative and initializes object with input
+    if (nValue < 0)
+    {
+        this->sign = NEGATIVE;
+        nValue *= -1;
+    }
+    else
+    {
+        this->sign = POSITIVE;
+    }
+    this->number = std::to_string(nValue);
+}
+
+largeInt::largeInt(std::string nValue)
+{
+    // checks if input string starts with a minus and initializes object with input
+    if (nValue.front() == '-')
+    {
+        this->sign = NEGATIVE;
+        this->number = std::string(nValue.begin() + 1, nValue.end());
+    }
+    else
+    {
+        this->sign = POSITIVE;
+    }
+    this->number = nValue;
 }
 } // namespace libbig

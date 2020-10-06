@@ -33,6 +33,10 @@
 
 namespace libbig
 {
+// constants used with the bool largeInt::sign attribute
+// this->sign = POSITIVE; instead of this->sign = true;
+constexpr bool POSITIVE = true;
+constexpr bool NEGATIVE = false;
 class largeInt
 {
   private:
@@ -40,72 +44,51 @@ class largeInt
     std::string number;
 
   public:
-    largeInt()
-    {
-    }
+    largeInt();
 
-    largeInt(int)
-    {
-    }
-    largeInt(int64_t)
-    {
-    }
-    largeInt(long long)
-    {
-    }
-    largeInt(std::string)
-    {
-    }
+    explicit largeInt(int);
+    explicit largeInt(long long int);
+    explicit largeInt(std::string);
 
     largeInt operator+(largeInt);
     largeInt operator+(int);
-    largeInt operator+(int64_t);
-    largeInt operator+(long long);
+    largeInt operator+(long long int);
 
     largeInt operator-(largeInt);
     largeInt operator-(int);
-    largeInt operator-(int64_t);
-    largeInt operator-(long long);
+    largeInt operator-(long long int);
 
     largeInt operator*(largeInt);
     largeInt operator*(int);
-    largeInt operator*(int64_t);
-    largeInt operator*(long long);
+    largeInt operator*(long long int);
 
     largeInt operator/(largeInt);
     largeInt operator/(int);
-    largeInt operator/(int64_t);
-    largeInt operator/(long long);
+    largeInt operator/(long long int);
 
     largeInt operator%(largeInt);
     largeInt operator%(int);
-    largeInt operator%(int64_t);
-    largeInt operator%(long long);
+    largeInt operator%(long long int);
 
     largeInt &operator+=(largeInt);
     largeInt &operator+=(int);
-    largeInt &operator+=(int64_t);
-    largeInt &operator+=(long long);
+    largeInt &operator+=(long long int);
 
     largeInt &operator-=(largeInt);
     largeInt &operator-=(int);
-    largeInt &operator-=(int64_t);
-    largeInt &operator-=(long long);
+    largeInt &operator-=(long long int);
 
     largeInt &operator*=(largeInt);
     largeInt &operator*=(int);
-    largeInt &operator*=(int64_t);
-    largeInt &operator*=(long long);
+    largeInt &operator*=(long long int);
 
     largeInt &operator/=(largeInt);
     largeInt &operator/=(int);
-    largeInt &operator/=(int64_t);
-    largeInt &operator/=(long long);
+    largeInt &operator/=(long long int);
 
     largeInt operator%=(largeInt);
     largeInt operator%=(int);
-    largeInt operator%=(int64_t);
-    largeInt operator%=(long long);
+    largeInt operator%=(long long int);
 
     //   PREFIX OPERATORS
 
@@ -113,37 +96,31 @@ class largeInt
 
     void operator=(largeInt);
     void operator=(int);
-    void operator=(int64_t);
-    void operator=(long long);
+    void operator=(long long int);
 
     bool operator==(const largeInt &);
     bool operator==(int);
-    bool operator==(int64_t);
-    bool operator==(long long);
+    bool operator==(long long int);
 
     bool operator!=(largeInt);
     bool operator!=(int);
-    bool operator!=(int64_t);
+    bool operator!=(long long int);
 
     bool operator<(largeInt);
     bool operator<(int);
-    bool operator<(int64_t);
-    bool operator<(long long);
+    bool operator<(long long int);
 
     bool operator>(largeInt);
     bool operator>(int);
-    bool operator>(int64_t);
-    bool operator>(long long);
+    bool operator>(long long int);
 
     bool operator<=(largeInt);
     bool operator<=(int);
-    bool operator<=(int64_t);
-    bool operator<=(long long);
+    bool operator<=(long long int);
 
     bool operator>=(largeInt);
     bool operator>=(int);
-    bool operator>=(int64_t);
-    bool operator>=(long long);
+    bool operator>=(long long int);
 
     friend std::istream &operator>>(std::istream &, largeInt &);
     friend std::ostream &operator<<(std::ostream &, largeInt &);

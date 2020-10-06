@@ -1,7 +1,8 @@
 add_library(
     big-int
     src/bigint.hpp
-
+    src/bigint.cpp
+    
     ## operators
     src/operators/assignment_operator.cpp
     src/operators/divide_equal.cpp
