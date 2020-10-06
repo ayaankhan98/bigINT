@@ -61,25 +61,21 @@ bool largeInt::operator==(int z)
     {
         return false;
     }
-    // checks if inputs have a different number of digits
-    // by converting the absolume value of z to a string
+    // iterates through each digit, starting by the last
+    // if two digits are not the same, returns false
     if (z < 0)
     {
         z *= -1;
     }
-    std::string zStr = std::to_string(z);
-    if (this->number.length() != zStr.length())
+    int n = this->number.length() - 1;
+    while (z != 0)
     {
-        return false;
-    }
-    for (int i = 0; i < this->number.length(); i++)
-    {
-        // iterates through all digits of both inputs
-        // if two digits are not the same, returns false
-        if (this->number[i] != zStr[i])
+        if (this->number[n] != z % 10)
         {
             return false;
         }
+        z /= 10;
+        n--;
     }
     return true;
 }
@@ -91,25 +87,21 @@ bool largeInt::operator==(long long int z)
     {
         return false;
     }
-    // checks if inputs have a different number of digits
-    // by converting the absolute value of z to a string
+    // iterates through each digit, starting by the last
+    // if two digits are not the same, returns false
     if (z < 0)
     {
         z *= -1;
     }
-    std::string zStr = std::to_string(z);
-    if (this->number.length() != zStr.length())
+    int n = this->number.length() - 1;
+    while (z != 0)
     {
-        return false;
-    }
-    for (int i = 0; i < this->number.length(); i++)
-    {
-        // iterates through all digits of both inputs
-        // if two digits are not the same, returns false
-        if (this->number[i] != zStr[i])
+        if (this->number[n] != z % 10)
         {
             return false;
         }
+        z /= 10;
+        n--;
     }
     return true;
 }
