@@ -1,5 +1,6 @@
 add_subdirectory(operators)
 add_subdirectory(operations)
+add_subdirectory(regex)
 enable_testing()
 file( GLOB TEST_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 foreach(testsourcefile ${TEST_SOURCES})

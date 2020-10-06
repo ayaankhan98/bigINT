@@ -1,0 +1,11 @@
+enable_testing()
+file( GLOB TEST_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
+foreach(testsourcefile ${TEST_SOURCES})
+    string ( REPLACE ".cpp" "" testname ${testsourcefile} )
+    add_executable( ${testname} ${testsourcefile} )
+    target_link_libraries( ${testname} big-int )
+    add_test(${testname} ${testname})
+endforeach()
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/regex_accepted_input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/regex_accepted_input.txt)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/regex_rejected_input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/regex_rejected_input.txt)
