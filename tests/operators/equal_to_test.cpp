@@ -25,28 +25,25 @@
  *
  */
 
-#include "../../big-int/src/bigint.hpp"
+#include <bigint.hpp>
 #include <cassert>
 
 int main()
 {
     // tests default ctor
     libbig::largeInt a;
-    assert(a == 1);
-    std::cout << "First test passed." << std::endl;
+    assert(a == 0);
 
     // tests std::string ctor
     libbig::largeInt b("42");
     assert(b == 42);
-    std::cout << "Second test passed." << std::endl;
 
     libbig::largeInt c("3333333333333333333");
     assert(c == (long long)3333333333333333333);
-    std::cout << "Third test passed." << std::endl;
 
-    // tests int and long long ctors
+    // // tests int and long long ctors
     libbig::largeInt d(999999);
     assert(d == libbig::largeInt(999999));
-    std::cout << "Fourth test passed." << std::endl;
+    
     return 0;
 }

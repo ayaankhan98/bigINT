@@ -63,17 +63,15 @@ bool largeInt::operator==(int z)
     }
     // iterates through each digit, starting by the last
     // if two digits are not the same, returns false
-    if (z < 0)
-    {
-        z *= -1;
-    }
+    z = std::abs(z);
     int n = this->number.length() - 1;
-    while (z != 0)
-    {
-        if (this->number[n] != z % 10)
+    while (z != 0 && n != 0)
+    {   
+        if (this->number[n] - '0' != z % 10)
         {
             return false;
         }
+        std:: cout << z << std::endl;
         z /= 10;
         n--;
     }
@@ -89,14 +87,11 @@ bool largeInt::operator==(long long int z)
     }
     // iterates through each digit, starting by the last
     // if two digits are not the same, returns false
-    if (z < 0)
-    {
-        z *= -1;
-    }
+    z = std::abs(z);
     int n = this->number.length() - 1;
     while (z != 0)
     {
-        if (this->number[n] != z % 10)
+        if (this->number[n] - '0' != z % 10)
         {
             return false;
         }
