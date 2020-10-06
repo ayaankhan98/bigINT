@@ -1,6 +1,6 @@
 name: Awesome CI Workflow
 
-on: [push, pull_request]
+on: [push, pull_request, pull_request_review, pull_request_review_comment]
 
 jobs:
   MainSequence:
@@ -38,5 +38,10 @@ jobs:
 
     - name: Testing Operations
       working-directory: ${{runner.workspace}}/build/tests/operations
+      shell: bash
+      run: ctest
+    
+    - name: Running Tests
+      working-directory: ${{runner.workspace}}/build
       shell: bash
       run: ctest
