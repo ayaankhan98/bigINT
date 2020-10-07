@@ -94,9 +94,9 @@ class largeInt
 
     //   POSTFIX OPERATORS
 
-    void operator=(largeInt);
-    void operator=(int);
-    void operator=(int64_t);
+    largeInt &operator=(const largeInt &);
+    largeInt &operator=(int);
+    largeInt &operator=(int64_t);
 
     bool operator==(const largeInt &);
     bool operator==(int);
@@ -123,7 +123,7 @@ class largeInt
     bool operator>=(int64_t);
 
     friend std::istream &operator>>(std::istream &, largeInt &);
-    friend std::ostream &operator<<(std::ostream &, largeInt &);
+    friend std::ostream &operator<<(std::ostream &, const largeInt &);
 };
 } // namespace libbig
 
