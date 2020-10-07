@@ -40,5 +40,18 @@ int main()
 
     libbig::largeInt c((long long)3333333333333333333);
     assert(c == libbig::largeInt("3333333333333333333"));
+
+    std::string s1 = "1234";
+    std::string s2 = "-1234";
+    
+    int i1 = 1234;
+    int i2 = -1234;
+
+    libbig::largeInt a1(s1), b1(s2);
+    libbig::largeInt a2(i1), b2(i2);
+
+    assert(a1 == a2);
+    assert(b1 == b2);
+
     return 0;
 }
