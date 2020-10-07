@@ -77,7 +77,7 @@ largeInt::largeInt(std::string nValue)
     else
     {
         this->sign = POSITIVE;
+        this->number = nValue;
     }
-    this->number = nValue;
 }
 } // namespace libbig
