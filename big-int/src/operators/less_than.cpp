@@ -59,11 +59,11 @@ bool largeInt::operator<(const largeInt &a)
         }
         else if(this->number[i]<a.number[i])
         {
-            return 1;
+            return !(1^this->sign);
         }
         else
         {
-            return 0;
+            return !(0^this->sign);
         }
     }
     return 0;
