@@ -5,7 +5,8 @@ int main() {
 
   libbig::largeInt ans("232");
 
-  libbig::largeInt * num=ans.libbig::largeInt pow(3,4);
+  libbig::largeInt * num=ans.pow(3,4);
+  
   assert(num->getnumber() == std::string("81"));
 
   num=ans.pow(4,9);
