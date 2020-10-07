@@ -32,5 +32,40 @@
 
 namespace libbig
 {
+bool largeInt::operator<(const largeInt &a)
+{
+    if(this->sign == NEGATIVE && a.sign == POSITIVE)
+    {
+        return 1;
+    }
+    if(a.sign == NEGATIVE && this->sign == POSITIVE)
+    {
+        return 0;
+    }
+    if(this->number.length() > a.number.length())
+    {
+        return 1^this->sign;
+    }
+    if(this->number.length() < a.number.length())
+    {
+        return 0^this->sign;
+    }
 
+    for(int i=0;i<a.number.length();i++)
+    {
+        if(this->number[i]==a.number[i])    
+        {
+            continue;
+        }
+        else if(this->number[i]<a.number[i])
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    return 0;
+}
 } // namespace libbig

@@ -106,19 +106,19 @@ class largeInt
     bool operator!=(int);
     bool operator!=(int64_t);
 
-    bool operator<(largeInt);
+    bool operator<(const largeInt &);
     bool operator<(int);
     bool operator<(int64_t);
 
-    bool operator>(largeInt);
+    bool operator>(const largeInt &);
     bool operator>(int);
     bool operator>(int64_t);
 
-    bool operator<=(largeInt);
+    bool operator<=(const largeInt &);
     bool operator<=(int);
     bool operator<=(int64_t);
 
-    bool operator>=(largeInt);
+    bool operator>=(const largeInt &);
     bool operator>=(int);
     bool operator>=(int64_t);
 

@@ -32,5 +32,12 @@
 
 namespace libbig
 {
-
+bool largeInt::operator<=(const largeInt &a)
+{
+    if(*this<a || *this==a)
+    {
+        return 1;
+    }
+    return 0;
+}
 } // namespace libbig
