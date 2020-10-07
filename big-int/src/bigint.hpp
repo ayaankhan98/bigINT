@@ -92,7 +92,7 @@ class largeInt
             res_size = multiply(a, res, res_size);
         
         // cout << a << "^" << b << " = ";
-        string str;
+        std::string str;
         int flag=0;
         if(res[res_size - 1]<0){
                 flag=1;
