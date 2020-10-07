@@ -7,7 +7,7 @@
 
 namespace libbig {
 
-    int multiply(int x, int res[], int res_size) {
+    int largeInt::multiply(int x, int res[], int res_size) {
         int carry = 0;
     
         for (int i = 0; i < res_size; i++) {
