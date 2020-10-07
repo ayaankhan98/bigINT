@@ -50,11 +50,13 @@ class largeInt
     explicit largeInt(long long int);
     explicit largeInt(std::string);
 
-     int multiply(int , int *, int );
-      string getnumber(){
+    int multiply(int , int *, int );
+    
+    std::string getnumber(){
         return number;
-      }
-      largeInt* largeInt::pow(int , int );
+    }
+    
+    largeInt* pow(int , int );
 
     largeInt operator+(largeInt);
     largeInt operator+(int);
