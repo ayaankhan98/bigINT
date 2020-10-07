@@ -2,7 +2,7 @@
 #include <istream>
 #include <ostream>
 
-#include "../bigint.hpp"
+#include <bigint.hpp>
 
 
 namespace libbig {

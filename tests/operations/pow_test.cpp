@@ -1,5 +1,5 @@
-#include <cassert>
 #include <bigint.hpp>
+#include <cassert>
 
 int main() {
 
