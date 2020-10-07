@@ -54,7 +54,7 @@ class largeInt
         return number;
     }
     
-    multiply(int x, int res[], int res_size) {
+    int multiply(int x, int res[], int res_size) {
         int carry = 0;
     
         for (int i = 0; i < res_size; i++) {
