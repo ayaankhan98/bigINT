@@ -32,9 +32,15 @@
 
 namespace libbig
 {
+//!  Operator overload for >= for largeInt class
+/*!
+    This operator returns a bool value which is 
+    1 when the >= condition is satisfied between the two largeInt objects
+    0 otherwise
+*/
 bool largeInt::operator>=(const largeInt &a)
 {
-    if(*this>a || *this==a)
+    if(*this>a || *this==a) //! if both > and == conditions are satisfied then >= condition is satified too
     {
         return 1;
     }

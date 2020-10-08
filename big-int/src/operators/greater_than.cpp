@@ -32,36 +32,47 @@
 
 namespace libbig
 {
+//!  Operator overload for > for largeInt class
+/*!
+    This operator returns a bool value which is 
+    1 when the > condition is satisfied between the two largeInt objects
+    0 otherwise
+*/
 bool largeInt::operator>(const largeInt &a)
 {
+    /** If first number is negative and second number is positive 
+     *  then > condition is not satisfied.
+     */
     if(this->sign == NEGATIVE && a.sign == POSITIVE)
     {
         return 0;
     }
+    /** If first number is positive and second number is negative 
+     *  then > condition is satisfied.
+     */
     if(a.sign == NEGATIVE && this->sign == POSITIVE)
     {
         return 1;
     }
+    /** If both the numbers have same sign 
+     *  then comparing their lengths
+     */
     if(this->number.length() > a.number.length())
     {
-        return 0^this->sign;
-    }
+        return 0^this->sign;    //! if first number is longer and both are negative then the condition is satisfied.
+    }                           //! but if first number is longer and both are positive then the condition is not satisfied.
     if(this->number.length() < a.number.length())
     {
-        return 1^this->sign;
-    }
+        return 1^this->sign;    //! if first number is shorter and both are negative then the condition is not satisfied.
+    }                           //! but if first number is shorter and both are positive then the condition is satisfied.
 
-    for(int i=0;i<a.number.length();i++)
+    for(int i=0;i<a.number.length();i++)    //! if the length of both numbers are same then we compare each digit from LTR and the first non equal digit can determine whether the condition is satisfied
     {
-        if(this->number[i]==a.number[i])    
-        {
-            continue;
-        }
-        else if(this->number[i]>a.number[i])
+        if(this->number[i]>a.number[i])     
         {
             return !(1^this->sign);
         }
-        else
+        if(this->number[i]<a.number[i])
         {
             return !(0^this->sign);
         }
