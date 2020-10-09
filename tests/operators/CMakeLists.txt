@@ -7,4 +7,4 @@ foreach(testsourcefile ${TEST_SOURCES})
     add_test(${testname} ${testname})
 endforeach()
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/input.txt)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
