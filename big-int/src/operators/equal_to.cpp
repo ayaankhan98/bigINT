@@ -71,7 +71,7 @@ bool largeInt::operator==(int z)
         {
             return false;
         }
-        std:: cout << z << std::endl;
+
         z /= 10;
         n--;
     }

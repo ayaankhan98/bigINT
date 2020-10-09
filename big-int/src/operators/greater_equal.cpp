@@ -32,5 +32,25 @@
 
 namespace libbig
 {
-
+  /**
+   * @brief greater equal operator overload for largeInt class.
+   *
+   * @param right hand parameter of >= operator
+   * @return true if *this (object on which this function is
+   *         called upon) is greater or equal else
+   *         false
+   *
+   */
+  bool largeInt::operator>=(const largeInt &a)
+  {
+    /**
+     * if both > and == conditions are satisfied then >= condition 
+     * is satified too
+     */
+    if(*this>a || *this==a)
+    {
+      return true;
+    }
+    return false;
+  }
 } // namespace libbig
