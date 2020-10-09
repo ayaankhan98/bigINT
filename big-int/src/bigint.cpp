@@ -66,7 +66,7 @@ largeInt::largeInt(long long nValue)
     this->number = std::to_string(nValue);
 }
 
-largeInt::largeInt(std::string nValue)
+largeInt::largeInt(const std::string& nValue)
 {
     // checks if input string starts with a minus and initializes object with input
     if (nValue.front() == '-')
