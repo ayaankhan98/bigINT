@@ -48,45 +48,45 @@ class largeInt
 
     explicit largeInt(int);
     explicit largeInt(long long int);
-    explicit largeInt(std::string);
+    explicit largeInt(const std::string&);
 
-    largeInt operator+(largeInt);
+    largeInt operator+(const largeInt&);
     largeInt operator+(int);
     largeInt operator+(int64_t);
 
-    largeInt operator-(largeInt);
+    largeInt operator-(const largeInt&);
     largeInt operator-(int);
     largeInt operator-(int64_t);
 
-    largeInt operator*(largeInt);
+    largeInt operator*(const largeInt&);
     largeInt operator*(int);
     largeInt operator*(int64_t);
 
-    largeInt operator/(largeInt);
+    largeInt operator/(const largeInt&);
     largeInt operator/(int);
     largeInt operator/(int64_t);
 
-    largeInt operator%(largeInt);
+    largeInt operator%(const largeInt&);
     largeInt operator%(int);
     largeInt operator%(int64_t);
 
-    largeInt &operator+=(largeInt);
+    largeInt &operator+=(const largeInt&);
     largeInt &operator+=(int);
     largeInt &operator+=(int64_t);
 
-    largeInt &operator-=(largeInt);
+    largeInt &operator-=(const largeInt&);
     largeInt &operator-=(int);
     largeInt &operator-=(int64_t);
 
-    largeInt &operator*=(largeInt);
+    largeInt &operator*=(const largeInt&);
     largeInt &operator*=(int);
     largeInt &operator*=(int64_t);
 
-    largeInt &operator/=(largeInt);
+    largeInt &operator/=(const largeInt&);
     largeInt &operator/=(int);
     largeInt &operator/=(int64_t);
 
-    largeInt operator%=(largeInt);
+    largeInt operator%=(const largeInt&);
     largeInt operator%=(int);
     largeInt operator%=(int64_t);
 
@@ -102,23 +102,23 @@ class largeInt
     bool operator==(int);
     bool operator==(int64_t);
 
-    bool operator!=(largeInt);
+    bool operator!=(const largeInt&);
     bool operator!=(int);
     bool operator!=(int64_t);
 
-    bool operator<(largeInt);
+    bool operator<(const largeInt&);
     bool operator<(int);
     bool operator<(int64_t);
 
-    bool operator>(largeInt);
+    bool operator>(const largeInt&);
     bool operator>(int);
     bool operator>(int64_t);
 
-    bool operator<=(largeInt);
+    bool operator<=(const largeInt&);
     bool operator<=(int);
     bool operator<=(int64_t);
 
-    bool operator>=(largeInt);
+    bool operator>=(const largeInt&);
     bool operator>=(int);
     bool operator>=(int64_t);
 
