@@ -7,8 +7,6 @@
 
 int main()
 {
-    libbig::largeInt a;
-    std::stringstream buffer;
     std::ifstream f("input.txt");
     std::string line;
 
@@ -16,9 +14,12 @@ int main()
     {
         while (std::getline(f, line, ','))
         {
-            a = libbig::largeInt(line);
-            buffer << a;
-            assert(buffer.str().compare(std::string(line)) == 0);
+            std::stringstream buffer;
+            libbig::largeInt a;
+            
+            buffer << line; 
+            buffer >> a;
+            assert(a == libbig::largeInt(line));
             buffer.str(std::string());
         }
         f.close();
