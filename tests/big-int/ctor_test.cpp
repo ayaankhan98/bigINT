@@ -32,7 +32,7 @@ int main()
 {
     // tests default ctor
     libbig::largeInt a;
-    assert(a == libbig::largeInt(0));
+    assert(a == libbig::largeInt(""));
     
     // tests std::string and int ctor
     libbig::largeInt b("42");

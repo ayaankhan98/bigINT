@@ -25,12 +25,64 @@
  *
  */
 
+#include <algorithm>
+#include <bigint.hpp>
 #include <istream>
 #include <ostream>
 
-#include "../bigint.hpp"
-
-namespace libbig
-{
-
-} // namespace libbig
+namespace libbig {
+largeInt largeInt::operator-(const largeInt& _z) {
+    largeInt diff;
+    largeInt z1 = _z;
+    largeInt z2 = *this;
+    if (z2.sign && !z1.sign) {
+        z1.sign = !z1.sign;
+        diff = z2 + z1;
+        z1.sign = !z1.sign;
+        return diff;
+    }
+    if (!z2.sign && z1.sign) {
+        z2.sign = !z2.sign;
+        diff = z2 + z1;
+        diff.sign = false;
+        z2.sign = !z2.sign;
+        return diff;
+    }
+    if (z2 < z1) {
+        largeInt temp = z2;
+        z2 = z1;
+        z1 = temp;
+        diff.sign = false;
+    }
+    int maxN = std::max(z2.number.length(), z1.number.length());
+    int minN = std::min(z2.number.length(), z1.number.length());
+    int borrow = 0;
+    for (int i = maxN - 1; i >= maxN - minN; i--) {
+        int tempDiff = (z2.number[i] - '0') -
+                       (z1.number[i - (maxN - minN)] - '0') - borrow;
+        if (tempDiff < 0) {
+            tempDiff += 10;
+            borrow = 1;
+        } else {
+            borrow = 0;
+        }
+        diff.number.push_back(tempDiff + '0');
+    }
+    for (int i = (maxN - minN) - 1; i >= 0; i--) {
+        if (z2.number[i] == '0' && borrow) {
+            diff.number.push_back('9');
+            continue;
+        }
+        int tempDiff = (z2.number[i] - '0') - borrow;
+        if (i > 0 || tempDiff > 0) {
+            diff.number.push_back(tempDiff + '0');
+        }
+        borrow = 0;
+    }
+    if (!z2.sign && !z1.sign) {
+        diff.sign = !diff.sign;
+    }
+    std::reverse(diff.number.begin(), diff.number.end());
+    return diff;
+}
+}  // namespace libbig
