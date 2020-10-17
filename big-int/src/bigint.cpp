@@ -33,7 +33,7 @@ largeInt::largeInt()
 {
     // initializes object with 0
     this->sign = POSITIVE;
-    this->number = "0";
+    this->number = "";
 }
 
 largeInt::largeInt(int nValue)
