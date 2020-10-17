@@ -25,12 +25,54 @@
  *
  */
 
+#include <algorithm>
+#include <bigint.hpp>
 #include <istream>
 #include <ostream>
 
-#include "../bigint.hpp"
-
-namespace libbig
-{
-
-} // namespace libbig
+namespace libbig {
+largeInt largeInt::operator+(const largeInt& _z) {
+    largeInt sum;
+    largeInt z1 = _z;
+    largeInt z2 = *this;
+    if (!z2.sign && z1.sign) {
+        z2.sign = !z2.sign;
+        sum = z1 - z2;
+        z2.sign = !z2.sign;
+        return sum;
+    }
+    if (z2.sign && !z1.sign) {
+        z1.sign = !z1.sign;
+        sum = z2 - z1;
+        z1.sign = !z2.sign;
+        return sum;
+    }
+    if (z2.number.length() < z1.number.length()) {
+        largeInt temp = z2;
+        z2 = z1;
+        z1 = temp;
+    }
+    int maxN = std::max(z2.number.length(), z1.number.length());
+    int minN = std::min(z2.number.length(), z1.number.length());
+    int carry = 0;
+    for (int i = maxN - 1; i >= maxN - minN; i--) {
+        int tempSum =
+            (z2.number[i] - '0') + (z1.number[i - (maxN - minN)] - '0') + carry;
+        sum.number.push_back(tempSum % 10 + '0');
+        carry = tempSum / 10;
+    }
+    for (int i = (maxN - minN) - 1; i >= 0; i--) {
+        int tempSum = (z2.number[i] - '0') + carry;
+        sum.number.push_back(tempSum % 10 + '0');
+        carry = tempSum / 10;
+    }
+    if (carry) {
+        sum.number.push_back(carry + '0');
+    }
+    std::reverse(sum.number.begin(), sum.number.end());
+    if (!z2.sign && !z1.sign) {
+        sum.sign = !sum.sign;
+    }
+    return sum;
+}
+}  // namespace libbig
