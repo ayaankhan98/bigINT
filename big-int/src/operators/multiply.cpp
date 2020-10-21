@@ -28,89 +28,45 @@
 #include <istream>
 #include <ostream>
 #include <math.h>
-
-#include "../bigint.hpp"
+#include <bigint.hpp>
+#include <algorithm>
 
 namespace libbig
 {
     largeInt largeInt::operator*(const largeInt &next_number) {
 
-        int i, j, k, carry;
+        auto simple_multiplication = [](const largeInt &x, const largeInt &y) {
+            largeInt x1 = x;
+            largeInt x2 = y;
+            largeInt adder;
+            largeInt Answer(0);
 
-        const int length_x { this->number.length() };
-        const int length_y { next_number.number.length() };
-        int append_zeroes { (length_x>length_y) ? length_x-length_y: length_y-length_x };
-
-        std::string zeroes;
-
-        for(i=0; i<append_zeroes; i++)
-            zeroes.append("0");
-
-        std::string x { ((length_x-length_y) > 0) ? this->number:zeroes.append(this->number) };
-        std::string y { ((length_y-length_x) > 0) ? next_number.number:zeroes.append(next_number.number) };
-
-        largeInt x1 (x.substr(0, x.length()/2) );
-        largeInt x2 (x.substr((x.length()/2) +1, x.length() -1) );
-        largeInt y1 (y.substr(0, y.length()/2) );
-        largeInt y2 (y.substr((y.length()/2) +1, y.length() -1) );
-        largeInt x3 = x1 + x2;
-        largeInt y3 = y1 + y2;
-
-        largeInt x1y1, x2y2, x3y3, adder[x.length()/2 + 1];
-
-        // for x1y1
-
-        for(i=((x.length()/2) - 1); i>=0; i--) {
-            for(j=(y.length()/2) - 1; j>=0; j--) {
-                int number { (x1.number[i] - 48 ) * (y1.number[j] - 48) };
-                adder[i].number.push_back(number%10 + 48);
-                carry = number/10;
-            }            
-            for(k=0; k<(x.length()/2) - 1 - i; k++)
-                adder[i].number.append("0");
-        }
-        for(i=0; i<x.length()/2; i++) {
-            x1y1 = x1y1 + adder[i];
-            adder[i].number = "";
-        }
-        for(i=0; i<(x.length() - (x.length()/2) - 1)*2; i++)
-            x1y1.number.append("0");
-        
-        //for x2y2
-
-        for(i=x2.number.length() - 1; i>=0; i--) {
-            for(j=y2.number.length() - 1; j>=0; j--) {
-                int number { (x2.number[i] - 48 ) * (y2.number[j] - 48) };
-                adder[i].number.push_back(number%10 + 48);
-                carry = number/10;
-            }            
-            for(k=0; k<(x.length()/2) - 1 - i; k++)
-                adder[i].number.append("0");
-        }
-        for(i=0; i<x2.number.length(); i++) {
-            x2y2 = x2y2 + adder[i];
-            adder[i].number = "";
-        } 
-
-        // for x3y3 
-
-        for(i=x3.number.length() - 1; i>=0; i--) {
-            for(j=y3.number.length() - 1; j>=0; j--) {
-                int number { (x3.number[i] - 48 ) * (y3.number[j] - 48) };
-                adder[i].number.push_back(number%10 + 48);
-                carry = number/10;
+            int carry { 0 }, temp, f=1, k;
+            std::string::reverse_iterator i, j;
+            for(i=x1.number.rbegin(); i!=x1.number.rend(); i++) {
+                for(j=x2.number.rbegin(); j!=x2.number.rend(); j++) {
+                    temp = (*i - 48) * (*j - 48) + carry;
+                    carry = temp/10;
+                    adder.number.push_back(temp%10 + 48);
+                }
+                if(carry) {
+                    adder.number.push_back(carry + 48);
+                    carry = 0;
+                }
+                std::reverse(adder.number.begin(), adder.number.end());
+                //std::cout<<"Before Adder = "<<adder<<std::endl;
+                for(k=f; k != 1; k/=10) {
+                    adder.number.push_back('0');
+                }
+                //std::cout<<"adder = "<<adder<<"Answer = "<<Answer<<"\n";
+                Answer = Answer + adder;
+                adder = largeInt();
+                f *= 10;
             }
-            for(k=0; k<(x.length()/2) - 1 - i; k++)
-                adder[i].number.append("0");
-        }
-        for(i=0; i<x3.number.length(); i++) {
-            x3y3 = x3y3 + adder[i];
-            adder[i].number = "";
-        }
-        x3y3 = x3y3 - x1y1 - x2y2;
-        for(i=0; i<(x.length() - (x.length()/2) - 1); i++)
-            x3y3.number.append("0");
-
-        return x1y1 + x2y2 + x3y3;
+            return Answer;
+        };
+        return simple_multiplication(*this, next_number);
     }
+
+
 } // namespace libbig
