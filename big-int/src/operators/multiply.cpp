@@ -77,19 +77,21 @@ namespace libbig
                 adder = largeInt();
                 f *= 10;
             }
+
+            if(x1.sign != x2.sign)
+                Answer.sign = false;
+
             return Answer;
         };
 
         largeInt x = *this;
         largeInt y = next_number;
         
-        if(x.number.length() == 1 || y.number.length() == 1) {
-            std::cout<<"x = "<<x.number.length()<<"\ty = "<<y.number.length();
-            return simple_multiplication(x, y);
-        }
-
-        else if(x.number.length() == 0 || y.number.length() == 0) {
+        if(x == largeInt("0") || y == largeInt("0") || x.number.length() == 0 || y.number.length() == 0) {
             return largeInt("0");
+        }
+        else if(x.number.length() == 1 || y.number.length() == 1) {
+            return simple_multiplication(x, y);
         }
 
         const int lower = std::min(x.number.length(), y.number.length());
