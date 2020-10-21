@@ -57,8 +57,8 @@ namespace libbig
 
             int carry { 0 }, temp, f=1, k;
             std::string::reverse_iterator i, j;
-            for(i=x1.number.rbegin(); i!=x1.number.rend(); i++) {
-                for(j=x2.number.rbegin(); j!=x2.number.rend(); j++) {
+            for(i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
+                for(j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
                     temp = (*i - 48) * (*j - 48) + carry;
                     carry = temp/10;
                     adder.number.push_back(temp%10 + 48);
