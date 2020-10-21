@@ -35,11 +35,25 @@ namespace libbig
 {
     largeInt largeInt::operator*(const largeInt &next_number) {
 
+        auto append_zeroes = [](const largeInt &x, const int factor) {
+            int k;
+            largeInt Answer = x;
+            for(k = 0; k < factor; k++) {
+                Answer.number.push_back('0');
+            }
+
+            return Answer;
+        };
+
         auto simple_multiplication = [](const largeInt &x, const largeInt &y) {
             largeInt x1 = x;
             largeInt x2 = y;
             largeInt adder;
             largeInt Answer(0);
+
+            if(x1.number.length() == 0 || x2.number.length() == 0) {
+                return largeInt();
+            }
 
             int carry { 0 }, temp, f=1, k;
             std::string::reverse_iterator i, j;
@@ -65,7 +79,39 @@ namespace libbig
             }
             return Answer;
         };
-        return simple_multiplication(*this, next_number);
+
+        largeInt x = *this;
+        largeInt y = next_number;
+        
+        if(x.number.length() == 1 || y.number.length() == 1) {
+            std::cout<<"x = "<<x.number.length()<<"\ty = "<<y.number.length();
+            return simple_multiplication(x, y);
+        }
+
+        else if(x.number.length() == 0 || y.number.length() == 0) {
+            return largeInt("0");
+        }
+
+        const int lower = std::min(x.number.length(), y.number.length());
+        const int higher = std::max(x.number.length(), y.number.length());
+
+        const int f = (higher >= 2*lower) ? lower:higher/2;
+
+        largeInt x1 = (f == x.number.length()) ? largeInt():largeInt(x.number.substr(0, x.number.length() - f));
+        largeInt y1 = (f == y.number.length()) ? largeInt():largeInt(y.number.substr(0, y.number.length() - f));
+        largeInt x2 = (f == x.number.length()) ? x:largeInt(x.number.substr(x.number.length() - f, x.number.length()));
+        largeInt y2 = (f == y.number.length()) ? y:largeInt(y.number.substr(y.number.length() - f, y.number.length()));
+
+        const largeInt x3 = x1 + x2;
+        const largeInt y3 = y1 + y2;        
+
+        largeInt x1y1 = simple_multiplication(x1, y1);
+        largeInt x2y2 = simple_multiplication(x2, y2);
+        largeInt x3y3 = simple_multiplication(x3, y3);
+
+        largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
+
+        return xy;
     }
 
 
