@@ -111,6 +111,9 @@ namespace libbig
 
         largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
 
+        if(x.sign != y.sign)
+            xy.sign = false;
+
         return xy;
     }
 
