@@ -35,17 +35,23 @@ namespace libbig
 {
     largeInt largeInt::operator*(const largeInt &next_number) {
 
-        auto append_zeroes = [](const largeInt &x, const int factor) {
-            int k;
+        using Iterator = std::string::reverse_iterator; 
+
+        auto append_zeroes = [] (const largeInt &x, const int factor) {
             largeInt Answer = x;
-            for(k = 0; k < factor; k++) {
+            for(int k = 0; k < factor; k++) {
                 Answer.number.push_back('0');
             }
 
             return Answer;
         };
 
-        auto simple_multiplication = [](const largeInt &x, const largeInt &y) {
+        auto simple_multiplication = [] (const largeInt &x, const largeInt &y) {
+
+            auto char_int_converter = [] (const char &x) {
+                return ((x >= '0' && x <= '9') ? x - '0' : x + '0') ;
+            };
+
             largeInt x1 = x;
             largeInt x2 = y;
             largeInt adder;
@@ -56,15 +62,14 @@ namespace libbig
             }
 
             int carry { 0 }, temp, f=1, k;
-            std::string::reverse_iterator i, j;
-            for(i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
-                for(j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
-                    temp = (*i - 48) * (*j - 48) + carry;
+            for(Iterator i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
+                for(Iterator j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
+                    temp = char_int_converter(*i) * char_int_converter(*j) + carry;
                     carry = temp/10;
-                    adder.number.push_back(temp%10 + 48);
+                    adder.number.push_back(char_int_converter(temp%10));
                 }
                 if(carry) {
-                    adder.number.push_back(carry + 48);
+                    adder.number.push_back(char_int_converter(carry));
                     carry = 0;
                 }
                 std::reverse(adder.number.begin(), adder.number.end());
