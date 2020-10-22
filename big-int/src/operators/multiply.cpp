@@ -27,10 +27,102 @@
 
 #include <istream>
 #include <ostream>
-
-#include "../bigint.hpp"
+#include <bigint.hpp>
+#include <algorithm>
 
 namespace libbig
 {
+    largeInt largeInt::operator*(const largeInt &next_number) {
+
+        auto remove_zeroes = [] (const largeInt &x) {
+            for(int j=0; j < x.number.length(); ++j) {
+                if((x.number[j]) != '0') {
+                    return largeInt(x.number.substr(j, x.number.length()));
+                }
+            }
+            return largeInt("0");
+        };
+
+        auto append_zeroes = [] (const largeInt &x, const int factor) {
+            largeInt Answer = x;
+            for(int k = 0; k < factor; k++) {
+                Answer.number.push_back('0');
+            }
+
+            return Answer;
+        };
+
+        auto simple_multiplication = [] (const largeInt &x, const largeInt &y) {
+
+            largeInt x1 = x;
+            largeInt x2 = y;
+            largeInt adder;
+            largeInt Answer(0);
+
+            if(x1.number.length() == 0 || x2.number.length() == 0) {
+                return largeInt();
+            }
+
+            int carry { 0 }, temp, f=0;
+            for(auto i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
+                for(auto j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
+                    temp = char_int_converter(*i) * char_int_converter(*j) + carry;
+                    carry = temp/10;
+                    adder.number.push_back(char_int_converter(temp%10));
+                }
+                if(carry) {
+                    adder.number.push_back(char_int_converter(carry));
+                    carry = 0;
+                }
+                std::reverse(adder.number.begin(), adder.number.end());
+                for(int k=1; k <= f; ++k) {
+                    adder.number.push_back('0');
+                }
+                Answer = Answer + adder;
+                adder = largeInt();
+                f += 1;
+            }
+
+            if(x1.sign != x2.sign)
+                Answer.sign = NEGATIVE;
+
+            return Answer;
+        };
+
+        largeInt x = *this;
+        largeInt y = next_number;
+        
+        if(x.number == "0" || y.number == "0" || x.number.length() == 0 || y.number.length() == 0) {
+            return largeInt("0");
+        }
+        else if(x.number.length() == 1 || y.number.length() == 1) {
+            return simple_multiplication(x, y);
+        }
+
+        const int lower = std::min(x.number.length(), y.number.length());
+        const int higher = std::max(x.number.length(), y.number.length());
+
+        const int f = (higher >= 2*lower) ? lower:higher/2;
+
+        largeInt x1 = (f == x.number.length()) ? largeInt():largeInt(x.number.substr(0, x.number.length() - f));
+        largeInt y1 = (f == y.number.length()) ? largeInt():largeInt(y.number.substr(0, y.number.length() - f));
+        largeInt x2 = (f == x.number.length()) ? x:largeInt(x.number.substr(x.number.length() - f, x.number.length()));
+        largeInt y2 = (f == y.number.length()) ? y:largeInt(y.number.substr(y.number.length() - f, y.number.length()));
+    
+        const largeInt x3 = x1 + x2;
+        const largeInt y3 = y1 + y2;        
+
+        largeInt x1y1 = simple_multiplication(x1, y1);
+        largeInt x2y2 = simple_multiplication(x2, y2);
+        largeInt x3y3 = simple_multiplication(x3, y3);
+
+        largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
+
+        if(x.sign != y.sign)
+            xy.sign = NEGATIVE;
+
+        return remove_zeroes(xy);
+    }
+
 
 } // namespace libbig

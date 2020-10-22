@@ -125,6 +125,7 @@ class largeInt
     friend std::istream &operator>>(std::istream &, largeInt &);
     friend std::ostream &operator<<(std::ostream &, const largeInt &);
 };
+int char_int_converter(const char &x);
 } // namespace libbig
 
 #endif
