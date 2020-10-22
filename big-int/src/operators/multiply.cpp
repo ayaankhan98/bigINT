@@ -84,7 +84,7 @@ namespace libbig
             }
 
             if(x1.sign != x2.sign)
-                Answer.sign = false;
+                Answer.sign = NEGATIVE;
 
             return Answer;
         };
@@ -119,7 +119,7 @@ namespace libbig
         largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
 
         if(x.sign != y.sign)
-            xy.sign = false;
+            xy.sign = NEGATIVE;
 
         return remove_zeroes(xy);
     }
