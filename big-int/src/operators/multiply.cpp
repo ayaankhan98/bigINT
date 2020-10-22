@@ -37,6 +37,21 @@ namespace libbig
 
         using Iterator = std::string::reverse_iterator; 
 
+        auto remove_zeroes = [] (const largeInt &x) {
+            largeInt Answer = x;
+            std::reverse(Answer.number.begin(), Answer.number.end());
+            for(Iterator j=Answer.number.rbegin(); j != Answer.number.rend() - 1; ++j) {
+                if((*j) == '0') {
+                    Answer.number.pop_back();
+                }
+                else {
+                    break;
+                }
+            }
+            std::reverse(Answer.number.begin(), Answer.number.end());
+            return Answer;
+        };
+
         auto append_zeroes = [] (const largeInt &x, const int factor) {
             largeInt Answer = x;
             for(int k = 0; k < factor; k++) {
@@ -61,7 +76,7 @@ namespace libbig
                 return largeInt();
             }
 
-            int carry { 0 }, temp, f=1, k;
+            int carry { 0 }, temp, f=0;
             for(Iterator i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
                 for(Iterator j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
                     temp = char_int_converter(*i) * char_int_converter(*j) + carry;
@@ -73,14 +88,12 @@ namespace libbig
                     carry = 0;
                 }
                 std::reverse(adder.number.begin(), adder.number.end());
-                //std::cout<<"Before Adder = "<<adder<<std::endl;
-                for(k=f; k != 1; k/=10) {
+                for(int k=1; k <= f; ++k) {
                     adder.number.push_back('0');
                 }
-                //std::cout<<"adder = "<<adder<<"Answer = "<<Answer<<"\n";
                 Answer = Answer + adder;
                 adder = largeInt();
-                f *= 10;
+                f += 1;
             }
 
             if(x1.sign != x2.sign)
@@ -92,7 +105,7 @@ namespace libbig
         largeInt x = *this;
         largeInt y = next_number;
         
-        if(x == largeInt("0") || y == largeInt("0") || x.number.length() == 0 || y.number.length() == 0) {
+        if(x.number == "0" || y.number == "0" || x.number.length() == 0 || y.number.length() == 0) {
             return largeInt("0");
         }
         else if(x.number.length() == 1 || y.number.length() == 1) {
@@ -108,7 +121,7 @@ namespace libbig
         largeInt y1 = (f == y.number.length()) ? largeInt():largeInt(y.number.substr(0, y.number.length() - f));
         largeInt x2 = (f == x.number.length()) ? x:largeInt(x.number.substr(x.number.length() - f, x.number.length()));
         largeInt y2 = (f == y.number.length()) ? y:largeInt(y.number.substr(y.number.length() - f, y.number.length()));
-
+    
         const largeInt x3 = x1 + x2;
         const largeInt y3 = y1 + y2;        
 
@@ -121,7 +134,7 @@ namespace libbig
         if(x.sign != y.sign)
             xy.sign = false;
 
-        return xy;
+        return remove_zeroes(xy);
     }
 
 
