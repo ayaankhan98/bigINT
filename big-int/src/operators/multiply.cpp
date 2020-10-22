@@ -27,7 +27,6 @@
 
 #include <istream>
 #include <ostream>
-#include <math.h>
 #include <bigint.hpp>
 #include <algorithm>
 
@@ -35,21 +34,13 @@ namespace libbig
 {
     largeInt largeInt::operator*(const largeInt &next_number) {
 
-        using Iterator = std::string::reverse_iterator; 
-
         auto remove_zeroes = [] (const largeInt &x) {
-            largeInt Answer = x;
-            std::reverse(Answer.number.begin(), Answer.number.end());
-            for(Iterator j=Answer.number.rbegin(); j != Answer.number.rend() - 1; ++j) {
-                if((*j) == '0') {
-                    Answer.number.pop_back();
-                }
-                else {
-                    break;
+            for(int j=0; j < x.number.length(); ++j) {
+                if((x.number[j]) != '0') {
+                    return largeInt(x.number.substr(j, x.number.length()));
                 }
             }
-            std::reverse(Answer.number.begin(), Answer.number.end());
-            return Answer;
+            return largeInt("0");
         };
 
         auto append_zeroes = [] (const largeInt &x, const int factor) {
@@ -63,10 +54,6 @@ namespace libbig
 
         auto simple_multiplication = [] (const largeInt &x, const largeInt &y) {
 
-            auto char_int_converter = [] (const char &x) {
-                return ((x >= '0' && x <= '9') ? x - '0' : x + '0') ;
-            };
-
             largeInt x1 = x;
             largeInt x2 = y;
             largeInt adder;
@@ -77,8 +64,8 @@ namespace libbig
             }
 
             int carry { 0 }, temp, f=0;
-            for(Iterator i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
-                for(Iterator j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
+            for(auto i=x1.number.rbegin(); i!=x1.number.rend(); ++i) {
+                for(auto j=x2.number.rbegin(); j!=x2.number.rend(); ++j) {
                     temp = char_int_converter(*i) * char_int_converter(*j) + carry;
                     carry = temp/10;
                     adder.number.push_back(char_int_converter(temp%10));

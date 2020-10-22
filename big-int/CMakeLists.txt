@@ -3,6 +3,9 @@ add_library(
     src/bigint.hpp
     src/bigint.cpp
     
+    ## helpers
+    src/helpers.cpp
+
     ## operators
     src/operators/assignment_operator.cpp
     src/operators/divide_equal.cpp
