@@ -109,12 +109,12 @@ namespace libbig
         largeInt x2 = (f == x.number.length()) ? x:largeInt(x.number.substr(x.number.length() - f, x.number.length()));
         largeInt y2 = (f == y.number.length()) ? y:largeInt(y.number.substr(y.number.length() - f, y.number.length()));
     
-        const largeInt x3 = x1 + x2;
-        const largeInt y3 = y1 + y2;        
+        largeInt x3 = x1 + x2;
+        largeInt y3 = y1 + y2;        
 
-        largeInt x1y1 = simple_multiplication(x1, y1);
-        largeInt x2y2 = simple_multiplication(x2, y2);
-        largeInt x3y3 = simple_multiplication(x3, y3);
+        largeInt x1y1 = x1 * y1;
+        largeInt x2y2 = x2 * y2;
+        largeInt x3y3 = x3 * y3;
 
         largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
 
