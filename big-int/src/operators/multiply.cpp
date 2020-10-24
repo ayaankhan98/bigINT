@@ -124,5 +124,11 @@ namespace libbig
         return remove_zeroes(xy);
     }
 
+    largeInt largeInt::operator*(int next_number) {
+        return *this * largeInt(next_number);
+    }
 
+    largeInt largeInt::operator*(int64_t next_number) {
+        return *this * largeInt(std::to_string(next_number));
+    }
 } // namespace libbig
