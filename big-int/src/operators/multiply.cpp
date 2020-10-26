@@ -94,13 +94,13 @@ namespace libbig
             const int len = num.number.length();
             int factor = 1;
             complexCoeffs Answer;
-            int i = 0;
-            while (i != len) {
-                std::complex<float> single(static_cast<float> (factor*char_int_converter(num.number[i])), 0.0);
+            int i = 1;
+            while (i != len+1) {
+                std::complex<float> single(static_cast<float> (factor*char_int_converter(num.number[len - i])), 0.0);
                 Answer.push_back(single);
                 factor *= 10;
                 ++i;
-            }
+            std::cout<<std::endl;
             return Answer;
         };
 
@@ -113,6 +113,28 @@ namespace libbig
         else if(x.number.length() == 1 || y.number.length() == 1) {
             return simple_multiplication(x, y);
         }
+
+        const complexCoeffs polynomial_x = get_polynomial(x);
+        const complexCoeffs polynomial_y = get_polynomial(y);
+        
+        const complexCoeffs DFT_x = fast_fourier_transform(false, polynomial_x);
+        const complexCoeffs DFT_y = fast_fourier_transform(false, polynomial_y);
+
+        const int min = std::min(DFT_x.size(), DFT_y.size());
+
+        complexCoeffs DFT_xy;
+
+        for(int i = 0; i<min; ++i) {
+            DFT_xy.push_back(DFT_x[i]*DFT_y[i]);
+        }
+
+        largeInt Answer;
+        complexCoeffs IDFT_xy = fast_fourier_transform(true, DFT_xy);
+        for(int i = 0; i<IDFT_xy.size(); ++i) {
+            largeInt single(std::to_string(static_cast<int>(std::abs(IDFT_xy[i]))));
+            Answer = Answer + single;
+        }
+        return Answer;
     }
 
     largeInt largeInt::operator*(int next_number) {

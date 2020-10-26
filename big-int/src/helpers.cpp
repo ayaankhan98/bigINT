@@ -38,7 +38,7 @@ namespace libbig
         return ((x >= '0' && x <= '9') ? x - '0' : x + '0') ;
     }
 
-    complexCoeffs fast_fourier_transform(const complexCoeffs num, const bool is_IDFT = false) {
+    complexCoeffs fast_fourier_transform(const bool is_IDFT, const complexCoeffs num) {
 
         const int len = num.size();
         const int half_len = len/2;
@@ -52,23 +52,23 @@ namespace libbig
         complexCoeffs odd_coeffs;
         for (int i = 0; i<num.size(); ++i) {
             if(i%2) {
-                odd_coeffs.push_back(num[i]);
+                even_coeffs.push_back(num[i]);
             }
             else {
-                even_coeffs.push_back(num[i]);
+                odd_coeffs.push_back(num[i]);
             }
             
         }
-        even_coeffs = fast_fourier_transform(even_coeffs);
-        odd_coeffs = fast_fourier_transform(odd_coeffs);
+        even_coeffs = fast_fourier_transform(is_IDFT, even_coeffs);
+        odd_coeffs = fast_fourier_transform(is_IDFT, odd_coeffs);
         complexCoeffs Answer;
         Answer.assign(len, 0.0);
         for(int i = 0; i<half_len; ++i) {
             Answer[i] = even_coeffs[i] + w * odd_coeffs[i];
             Answer[half_len + i] = even_coeffs[i] - w * odd_coeffs[i];
             if(is_IDFT) {
-                Answer[i] /= 2;
-                Answer[half_len + i] /= 2;
+                Answer[i] /= len;
+                Answer[half_len + i] /= len;
             }
             w *= w_n;
         }

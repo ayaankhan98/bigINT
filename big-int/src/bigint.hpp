@@ -129,7 +129,9 @@ class largeInt
     friend std::istream &operator>>(std::istream &, largeInt &);
     friend std::ostream &operator<<(std::ostream &, const largeInt &);
 };
-int char_int_converter(const char &x);
+// HELPERS
+int char_int_converter(const char&);
+complexCoeffs fast_fourier_transform(const bool is_IDFT, const complexCoeffs);
 } // namespace libbig
 
 #endif
