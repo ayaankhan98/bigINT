@@ -30,6 +30,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <complex>
 
 namespace libbig
 {
@@ -37,7 +39,8 @@ namespace libbig
 // this->sign = POSITIVE; instead of this->sign = true;
 constexpr bool POSITIVE = true;
 constexpr bool NEGATIVE = false;
-constexpr double PI = 2*acos(0.0);
+const double PI = 2*acos(0.0);
+typedef std::vector<std::complex<double>> complexCoeffs;
 class largeInt
 {
   private:

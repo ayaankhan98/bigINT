@@ -32,19 +32,17 @@
 #include <vector>
 #include <complex>
 
-typedef std::vector<std::complex<double>> complexCoeffs;
-
 namespace libbig
 {
     int char_int_converter(const char &x) {
         return ((x >= '0' && x <= '9') ? x - '0' : x + '0') ;
     }
 
-    complexCoeffs fast_fourier_transform(const complexCoeffs num) {
+    complexCoeffs fast_fourier_transform(const complexCoeffs num, const bool is_IDFT = false) {
 
         const int len = num.size();
         const int half_len = len/2;
-        const double phase_angle = (2*PI)/len;
+        const double phase_angle = (is_IDFT) ? (-PI/half_len):(PI/half_len);
         if(len == 1) {
             return num;
         }
@@ -68,6 +66,10 @@ namespace libbig
         for(int i = 0; i<half_len; ++i) {
             Answer[i] = even_coeffs[i] + w * odd_coeffs[i];
             Answer[half_len + i] = even_coeffs[i] - w * odd_coeffs[i];
+            if(is_IDFT) {
+                Answer[i] /= 2;
+                Answer[half_len + i] /= 2;
+            }
             w *= w_n;
         }
         return Answer;

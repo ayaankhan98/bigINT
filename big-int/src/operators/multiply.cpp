@@ -90,6 +90,20 @@ namespace libbig
             return Answer;
         };
 
+        auto get_polynomial = [] (const largeInt &num) {
+            const int len = num.number.length();
+            int factor = 1;
+            complexCoeffs Answer;
+            int i = 0;
+            while (i != len) {
+                std::complex<float> single(static_cast<float> (factor*char_int_converter(num.number[i])), 0.0);
+                Answer.push_back(single);
+                factor *= 10;
+                ++i;
+            }
+            return Answer;
+        };
+
         largeInt x = *this;
         largeInt y = next_number;
         
@@ -99,30 +113,6 @@ namespace libbig
         else if(x.number.length() == 1 || y.number.length() == 1) {
             return simple_multiplication(x, y);
         }
-
-        const int lower = std::min(x.number.length(), y.number.length());
-        const int higher = std::max(x.number.length(), y.number.length());
-
-        const int f = (higher >= 2*lower) ? lower:higher/2;
-
-        largeInt x1 = (f == x.number.length()) ? largeInt():largeInt(x.number.substr(0, x.number.length() - f));
-        largeInt y1 = (f == y.number.length()) ? largeInt():largeInt(y.number.substr(0, y.number.length() - f));
-        largeInt x2 = (f == x.number.length()) ? x:largeInt(x.number.substr(x.number.length() - f, x.number.length()));
-        largeInt y2 = (f == y.number.length()) ? y:largeInt(y.number.substr(y.number.length() - f, y.number.length()));
-    
-        largeInt x3 = x1 + x2;
-        largeInt y3 = y1 + y2;        
-
-        largeInt x1y1 = x1 * y1;
-        largeInt x2y2 = x2 * y2;
-        largeInt x3y3 = x3 * y3;
-
-        largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
-
-        if(x.sign != y.sign)
-            xy.sign = NEGATIVE;
-
-        return remove_zeroes(xy);
     }
 
     largeInt largeInt::operator*(int next_number) {
