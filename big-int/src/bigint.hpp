@@ -37,6 +37,7 @@ namespace libbig
 // this->sign = POSITIVE; instead of this->sign = true;
 constexpr bool POSITIVE = true;
 constexpr bool NEGATIVE = false;
+constexpr double PI = 2*acos(0.0);
 class largeInt
 {
   private:

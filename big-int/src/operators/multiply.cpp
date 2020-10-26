@@ -29,6 +29,7 @@
 #include <ostream>
 #include <bigint.hpp>
 #include <algorithm>
+#include <complex>
 
 namespace libbig
 {

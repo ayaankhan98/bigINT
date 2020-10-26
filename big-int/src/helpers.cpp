@@ -29,10 +29,47 @@
 #include <ostream>
 #include <bigint.hpp>
 #include <algorithm>
+#include <vector>
+#include <complex>
+
+typedef std::vector<std::complex<double>> complexCoeffs;
 
 namespace libbig
 {
     int char_int_converter(const char &x) {
         return ((x >= '0' && x <= '9') ? x - '0' : x + '0') ;
+    }
+
+    complexCoeffs fast_fourier_transform(const complexCoeffs num) {
+
+        const int len = num.size();
+        const int half_len = len/2;
+        const double phase_angle = (2*PI)/len;
+        if(len == 1) {
+            return num;
+        }
+        std::complex<double> w_n (1.0, phase_angle);
+        std::complex<double> w (1, 0);
+        complexCoeffs even_coeffs;
+        complexCoeffs odd_coeffs;
+        for (int i = 0; i<num.size(); ++i) {
+            if(i%2) {
+                odd_coeffs.push_back(num[i]);
+            }
+            else {
+                even_coeffs.push_back(num[i]);
+            }
+            
+        }
+        even_coeffs = fast_fourier_transform(even_coeffs);
+        odd_coeffs = fast_fourier_transform(odd_coeffs);
+        complexCoeffs Answer;
+        Answer.assign(len, 0.0);
+        for(int i = 0; i<half_len; ++i) {
+            Answer[i] = even_coeffs[i] + w * odd_coeffs[i];
+            Answer[half_len + i] = even_coeffs[i] - w * odd_coeffs[i];
+            w *= w_n;
+        }
+        return Answer;
     }
 } // namespace libbig
