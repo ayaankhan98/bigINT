@@ -100,6 +100,7 @@ namespace libbig
                 Answer.push_back(single);
                 factor *= 10;
                 ++i;
+            }
             std::cout<<std::endl;
             return Answer;
         };
