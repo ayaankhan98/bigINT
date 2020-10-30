@@ -44,11 +44,18 @@ int main()
 
     /// Tests for addition of largeInt to int (largeInt + int)
     /// write tests here
-
+    a = libbig::largeInt("9999999999999999999999999999999999999999999999999999999999");
+    int b1 = 1;
+    c = a + b1;
+    assert(c == libbig::largeInt("10000000000000000000000000000000000000000000000000000000000"));
 
 
     /// Tests for addition of largeInt to int64_t (largeInt + int64_t)
     /// write tests here
-    
+    a = libbig::largeInt("199999999999999999999999999999999999999999999999999999999999999999");
+    int64_t b2 = 1;
+    c = a + b2;
+    assert(c == libbig::largeInt("200000000000000000000000000000000000000000000000000000000000000000"));
+
     return 0;
 }

@@ -51,7 +51,7 @@ largeInt::largeInt(int nValue)
     this->number = std::to_string(nValue);
 }
 
-largeInt::largeInt(long long nValue)
+largeInt::largeInt(int64_t nValue)
 {
     // checks if input is negative and initializes object with input
     if (nValue < 0)

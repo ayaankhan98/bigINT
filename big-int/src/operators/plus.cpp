@@ -75,4 +75,15 @@ largeInt largeInt::operator+(const largeInt& _z) {
     }
     return sum;
 }
+largeInt largeInt::operator + (const int64_t& _z) {
+    largeInt z2 (_z);
+    largeInt sum = *this + z2;
+    return sum;
+}
+
+largeInt largeInt::operator + (const int& _z) {
+    largeInt z2 (_z);
+    largeInt sum = *this + z2;
+    return sum;
+}
 }  // namespace libbig

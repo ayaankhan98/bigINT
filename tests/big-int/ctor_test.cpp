@@ -38,7 +38,7 @@ int main()
     libbig::largeInt b("42");
     assert(b == libbig::largeInt(42));
 
-    libbig::largeInt c((long long)3333333333333333333);
+    libbig::largeInt c((int64_t)3333333333333333333);
     assert(c == libbig::largeInt("3333333333333333333"));
 
     std::string s1 = "1234";
