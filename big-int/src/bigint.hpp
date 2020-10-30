@@ -47,12 +47,12 @@ class largeInt
     largeInt();
 
     explicit largeInt(int);
-    explicit largeInt(long long int);
+    explicit largeInt(int64_t);
     explicit largeInt(const std::string&);
 
     largeInt operator+(const largeInt&);
-    largeInt operator+(int);
-    largeInt operator+(int64_t);
+    largeInt operator+(const int&);
+    largeInt operator+(const int64_t&);
 
     largeInt operator-(const largeInt&);
     largeInt operator-(int);
