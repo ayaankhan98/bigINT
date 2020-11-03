@@ -6,16 +6,16 @@ int main()
 {
     /// Tests for multiplication of largeInt to largeInt (largeInt * largeInt)
     /// Test 1
-    libbig::largeInt a("1");
+    libbig::largeInt a("1111");
     libbig::largeInt b("1");
     libbig::largeInt c = a * b;
-    assert(c == libbig::largeInt("1"));
+    assert(c == libbig::largeInt("1111"));
 
     /// Test 2
-    a = libbig::largeInt("999");
-    b = libbig::largeInt("99999");
+    a = libbig::largeInt("24");
+    b = libbig::largeInt("25");
     c = a * b;
-    assert(c == libbig::largeInt("99899001"));
+    assert(c == libbig::largeInt("600"));
 
     /// Test 3
     a = libbig::largeInt("32516889472103571029388908423975");

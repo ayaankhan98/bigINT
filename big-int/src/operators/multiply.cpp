@@ -29,6 +29,7 @@
 #include <ostream>
 #include <bigint.hpp>
 #include <algorithm>
+#include <complex>
 
 namespace libbig
 {
@@ -89,6 +90,21 @@ namespace libbig
             return Answer;
         };
 
+        auto get_polynomial = [] (const largeInt &num) {
+            const int len = num.number.length();
+            int factor = 1;
+            complexCoeffs Answer;
+            int i = 1;
+            while (i != len+1) {
+                std::complex<float> single(static_cast<float> (factor*char_int_converter(num.number[len - i])), 0.0);
+                Answer.push_back(single);
+                factor *= 10;
+                ++i;
+            }
+            std::cout<<std::endl;
+            return Answer;
+        };
+
         largeInt x = *this;
         largeInt y = next_number;
         
@@ -99,29 +115,27 @@ namespace libbig
             return simple_multiplication(x, y);
         }
 
-        const int lower = std::min(x.number.length(), y.number.length());
-        const int higher = std::max(x.number.length(), y.number.length());
+        const complexCoeffs polynomial_x = get_polynomial(x);
+        const complexCoeffs polynomial_y = get_polynomial(y);
+        
+        const complexCoeffs DFT_x = fast_fourier_transform(false, polynomial_x);
+        const complexCoeffs DFT_y = fast_fourier_transform(false, polynomial_y);
 
-        const int f = (higher >= 2*lower) ? lower:higher/2;
+        const int min = std::min(DFT_x.size(), DFT_y.size());
 
-        largeInt x1 = (f == x.number.length()) ? largeInt():largeInt(x.number.substr(0, x.number.length() - f));
-        largeInt y1 = (f == y.number.length()) ? largeInt():largeInt(y.number.substr(0, y.number.length() - f));
-        largeInt x2 = (f == x.number.length()) ? x:largeInt(x.number.substr(x.number.length() - f, x.number.length()));
-        largeInt y2 = (f == y.number.length()) ? y:largeInt(y.number.substr(y.number.length() - f, y.number.length()));
-    
-        largeInt x3 = x1 + x2;
-        largeInt y3 = y1 + y2;        
+        complexCoeffs DFT_xy;
 
-        largeInt x1y1 = x1 * y1;
-        largeInt x2y2 = x2 * y2;
-        largeInt x3y3 = x3 * y3;
+        for(int i = 0; i<min; ++i) {
+            DFT_xy.push_back(DFT_x[i]*DFT_y[i]);
+        }
 
-        largeInt xy = append_zeroes(x1y1, 2*f) + append_zeroes((x3y3 - x1y1 - x2y2), f) + x2y2;
-
-        if(x.sign != y.sign)
-            xy.sign = NEGATIVE;
-
-        return remove_zeroes(xy);
+        largeInt Answer;
+        complexCoeffs IDFT_xy = fast_fourier_transform(true, DFT_xy);
+        for(int i = 0; i<IDFT_xy.size(); ++i) {
+            largeInt single(std::to_string(static_cast<int>(std::abs(IDFT_xy[i]))));
+            Answer = Answer + single;
+        }
+        return Answer;
     }
 
     largeInt largeInt::operator*(int next_number) {

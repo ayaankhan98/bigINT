@@ -29,10 +29,49 @@
 #include <ostream>
 #include <bigint.hpp>
 #include <algorithm>
+#include <vector>
+#include <complex>
 
 namespace libbig
 {
     int char_int_converter(const char &x) {
         return ((x >= '0' && x <= '9') ? x - '0' : x + '0') ;
+    }
+
+    complexCoeffs fast_fourier_transform(const bool is_IDFT, const complexCoeffs num) {
+
+        const int len = num.size();
+        const int half_len = len/2;
+        const double phase_angle = (is_IDFT) ? (-PI/half_len):(PI/half_len);
+        if(len == 1) {
+            return num;
+        }
+        std::complex<double> w_n (1.0, phase_angle);
+        std::complex<double> w (1, 0);
+        complexCoeffs even_coeffs;
+        complexCoeffs odd_coeffs;
+        for (int i = 0; i<num.size(); ++i) {
+            if(i%2) {
+                even_coeffs.push_back(num[i]);
+            }
+            else {
+                odd_coeffs.push_back(num[i]);
+            }
+            
+        }
+        even_coeffs = fast_fourier_transform(is_IDFT, even_coeffs);
+        odd_coeffs = fast_fourier_transform(is_IDFT, odd_coeffs);
+        complexCoeffs Answer;
+        Answer.assign(len, 0.0);
+        for(int i = 0; i<half_len; ++i) {
+            Answer[i] = even_coeffs[i] + w * odd_coeffs[i];
+            Answer[half_len + i] = even_coeffs[i] - w * odd_coeffs[i];
+            if(is_IDFT) {
+                Answer[i] /= len;
+                Answer[half_len + i] /= len;
+            }
+            w *= w_n;
+        }
+        return Answer;
     }
 } // namespace libbig

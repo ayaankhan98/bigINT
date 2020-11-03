@@ -30,6 +30,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <complex>
 
 namespace libbig
 {
@@ -37,6 +39,8 @@ namespace libbig
 // this->sign = POSITIVE; instead of this->sign = true;
 constexpr bool POSITIVE = true;
 constexpr bool NEGATIVE = false;
+const double PI = 2*acos(0.0);
+typedef std::vector<std::complex<double>> complexCoeffs;
 class largeInt
 {
   private:
@@ -125,7 +129,9 @@ class largeInt
     friend std::istream &operator>>(std::istream &, largeInt &);
     friend std::ostream &operator<<(std::ostream &, const largeInt &);
 };
-int char_int_converter(const char &x);
+// HELPERS
+int char_int_converter(const char&);
+complexCoeffs fast_fourier_transform(const bool is_IDFT, const complexCoeffs);
 } // namespace libbig
 
 #endif
